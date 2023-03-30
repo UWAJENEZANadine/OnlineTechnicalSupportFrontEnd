@@ -1,58 +1,52 @@
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
+import { Card, Input, Button, Typography } from "@material-tailwind/react";
+import { Select, Option } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import "../css/SignUp.css";
 
 const SignUp = () => {
   return (
-    <Card color="transparent" shadow={false}>
-      <Typography color="gray" className="mt-1 font-normal">
-        SignUp
-      </Typography>
-      <Typography color="gray" className="mt-1 font-normal">
-        Enter your details to register.
-      </Typography>
-      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-        <div className="mb-4 flex flex-col gap-6">
-          <Input size="lg" label="Name" />
-          <Input size="lg" label="Email" />
-          <Input type="password" size="lg" label="Password" />
-        </div>
-        <Checkbox
-          label={
-            <Typography
-              variant="small"
-              color="gray"
-              className="flex items-center font-normal"
-            >
-              I agree the
-              <a
-                href="#"
-                className="font-medium transition-colors hover:text-blue-500"
-              >
-                &nbsp;Terms and Conditions
-              </a>
-            </Typography>
-          }
-          containerProps={{ className: "-ml-2.5" }}
-        />
-        <Button className="mt-6" fullWidth>
-          Register
-        </Button>
-        <Typography color="gray" className="mt-4 text-center font-normal">
-          Already have an account?{" "}
-          <a
-            href="#"
-            className="font-medium text-blue-500 transition-colors hover:text-blue-700"
-          >
-            Sign In
-          </a>
+    <div className="signup-container bg-gray-300 h-screen">
+      <Card color="transparent" shadow={false} className="bg-white w-1/2 p-20">
+        <Typography
+          color="gray"
+          className="create-account-container mt-1 font-normal "
+        >
+          Create an Account
         </Typography>
-      </form>
-    </Card>
+        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+          <div className="mb-4 flex flex-col gap-6">
+            <div className="">
+              <Select label="Select your country">
+                <Option>Rwanda</Option>
+                <Option>Nigeria</Option>
+                <Option>Ethiopia</Option>
+                <Option>Angola</Option>
+                <Option>South Africa</Option>
+                <Option>Uganda</Option>
+                <Option>Burundi</Option>
+                <Option>Tanzania</Option>
+                <Option>DRC</Option>
+                <Option>Kenya</Option>
+              </Select>
+            </div>
+            <Input size="lg" label="Email" />
+            <Input size="lg" label="Phone number" type="tel" />
+            <Input type="password" size="lg" label="Password" />
+            <Input type="password" size="lg" label="Confirm Password" />
+          </div>
+
+          <Button className="signup-button mt-6" fullWidth>
+            Register
+          </Button>
+          <Typography>
+            Already have account{" "}
+            <a href="./SignIn.js" className="text-red-300">
+              Sign In
+            </a>
+          </Typography>
+        </form>
+      </Card>
+    </div>
   );
 };
 
