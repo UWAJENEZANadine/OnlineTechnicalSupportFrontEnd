@@ -5,11 +5,11 @@ import "../css/SignUp.css";
 
 const SignUp = () => {
   return (
-    <div className="signup-container bg-gray-300 h-screen">
+    <div className="signup-container bg-gray-300 h-full">
       <Card color="transparent" shadow={false} className="bg-white w-1/2 p-20">
         <Typography
           color="gray"
-          className="create-account-container mt-1 font-normal "
+          className="create-account-container font-normal "
         >
           Create an Account
         </Typography>
@@ -31,6 +31,9 @@ const SignUp = () => {
             </div>
             <Input size="lg" label="Email" />
             <Input size="lg" label="Phone number" type="tel" />
+            <Input size="lg" label="User name" />
+            <Input size="lg" label="First name" />
+            <Input size="lg" label="Last name" />
             <Input type="password" size="lg" label="Password" />
             <Input type="password" size="lg" label="Confirm Password" />
           </div>
@@ -38,13 +41,10 @@ const SignUp = () => {
           <Button className="signup-button mt-6" fullWidth>
             Register
           </Button>
-          <Typography>
-            Already have account{" "}
-            <a href="./SignIn.js" className="text-red-300">
-              Sign In
-            </a>
-          </Typography>
+         <Typography>Already have an Account<Link to='SignIn'>Sign In</Link></Typography> 
         </form>
+      
+    
       </Card>
     </div>
   );
