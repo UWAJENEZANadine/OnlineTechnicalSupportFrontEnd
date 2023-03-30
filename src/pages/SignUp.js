@@ -1,11 +1,6 @@
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
+import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 import "../css/SignUp.css";
 
 const SignUp = () => {
@@ -43,6 +38,12 @@ const SignUp = () => {
           <Button className="signup-button mt-6" fullWidth>
             Register
           </Button>
+          <Typography>
+            Already have account{" "}
+            <a href="./SignIn.js" className="text-red-300">
+              Sign In
+            </a>
+          </Typography>
         </form>
       </Card>
     </div>

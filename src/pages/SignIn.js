@@ -47,7 +47,7 @@ import {
     <FaGoogle style={{color:"red",fontSize:"25px"}}/>
     <FaApple style={{color:"gray",fontsize:"40px"}}/>
     <Typography>
-      Do no have an account? <a href='/signup'>SignUp</a>
+      Do no have an account? <a href='#'>SignUp</a>
     </Typography>
     </div>
     
