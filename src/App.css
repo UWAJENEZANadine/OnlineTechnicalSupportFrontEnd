@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+.content{
+  align-items: center;
+background-image: url('https://t3.ftcdn.net/jpg/03/55/60/70/360_F_355607062_zYMS8jaz4SfoykpWz5oViRVKL32IabTP.jpg');
+height: 60vh;
+width: 35%;
+margin: 2%;
+ 
+
+}
+.btn{
+  background-color: rgb(163, 31, 163);
+  border-radius: 15px;
+}
