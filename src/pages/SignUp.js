@@ -70,8 +70,7 @@ const SignUp = () => {
             <Typography className="pt-3">
               Already have an Account? 
               <Link to="SignIn" className="text-blue-300">
-                      Sign In
-              </Link>
+                      Sign In</Link>
             </Typography>
           </form>
         </Card>
