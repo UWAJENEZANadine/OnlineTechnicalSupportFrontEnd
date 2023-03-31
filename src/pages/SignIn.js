@@ -2,22 +2,34 @@ import React from 'react'
 import {
     Card, Input,Checkbox, Button,Typography,} from "@material-tailwind/react";
   import App from '../App';
-  import {  FaFacebook, FaGoogle,  FaApple} from "react-icons/fa";
+  import { Link } from "react-router-dom";
+  import GoogleIcon from "@mui/icons-material/Google";
+  import FacebookIcon from "@mui/icons-material/Facebook";
+  import AppleIcon from "@mui/icons-material/Apple";
+  
+ 
 
  const SignIn = () => {
   
   return (
-    <Card color="transparent" shadow={false} className="content mt-10">
+    <div className='content-SignIn grid grid-cols-2 m-4  '>
+      <div className='pic-SigIn'>
+        <img src='https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbiUyMHNpdHRpbmclMjBvbiUyMGNoYWlyJTIwd3JpdHRpbmclMjBvbiUyMGxhcHRvcCUyMHdpdGglMjByaWdodCUyMHNpZGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60' 
+        style={{width:"45vw",height:"60vh"}}/>
+      </div>
+      <div className='form-card'>
+    <Card color="transparent" shadow={false}>
     
-      <Typography color="gray" className="font-bold ">
-       Welcome Back!
+      <Typography  className="font-bold text-2xl text-black p-4">
+       ONLINE TECHNICAL SUPPORT
       </Typography>
-      <Typography >Login in your Account</Typography>
+    
       <form className=" w-70 max-w-screen-lg sm:w-96 ">
-        <div className="flex flex-col gap-4">
-          
-          <Input label="Email" />
-          <Input type="password" label="Password" />
+        <div className="flex flex-col gap-2 ">
+          <label className='font-bold'>Email</label>
+          <Input type="Email" style={{borderRadius:"20px"}}/>
+          <label className='font-bold'>Password</label>
+          <Input type="password" style={{borderRadius:"20px"}}/>
         </div>
         <Checkbox
           label={
@@ -33,25 +45,37 @@ import {
           containerProps={{ className: "-ml-2.5" }}
         />
       
-        <Button className=" btn mt-4 p-4 w-80 " >
-          Login
+        <Button className=" btn mt-20 p-2 " >
+          Log in
         </Button>
         <Typography className="font-bold m-2">
           or Login with
         </Typography>
+        <div className='flex justify-content-between items-center space-x-5 pt-2'>
+          <a href='#'>
+            <GoogleIcon className='signup with text-red-400 border-solid border-2 border-[#ad01b0;] rounded-'/>
+          </a>
+          <a href='#'>
+            <FacebookIcon className='signup with text-blue-800 border-solid border-2 border-[#ad01b0;] ml-5'/>
+          </a>
+          <a href='#'>
+            <AppleIcon className='signup with text-black border-solid border-2  border-[#ad01b0;] ml-5'/>
+          </a>
+     
+     </div>
+     <Typography className="pt-3">
+              Do not have an Account{" "}
+              <Link to="/SignUp" className="text-blue-300">
+                Sign Up
+              </Link>
+            </Typography>
         
       </form>
-      <div className='flex justify-content-between items-center space-x-5 p-2'>
      
-    <FaFacebook style={{color:"blue",fontSize:"25px"}}/>
-    <FaGoogle style={{color:"red",fontSize:"25px"}}/>
-    <FaApple style={{color:"gray",fontsize:"40px"}}/>
-    <Typography>
-      Do no have an account? <a href='#'>SignUp</a>
-    </Typography>
-    </div>
     
     </Card>
+    </div>
+    </div>
 
     
 
