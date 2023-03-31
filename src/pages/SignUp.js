@@ -14,11 +14,11 @@ const SignUp = () => {
         <img
           src={picture}
           alt="picture"
-          style={{ widith: "100%", height: "100vh" }}
+          style={{ widith: "100%", height: "120vh" }}
           className= "rounded-xl rounded-r-none"
         />
       </div>
-      <div className="bg-white p-10 rounded-xl w-full rounded-l-none">
+      <div className="bg-white p-5 pl-12 rounded-xl w-full rounded-l-none">
         <Card color="transparent" shadow={false} className="card-container-data">
           <Typography
             color="gray"
@@ -26,8 +26,8 @@ const SignUp = () => {
           >
             Create an Account
           </Typography>
-          <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-            <div className="mb-4 flex flex-col gap-6">
+          <form className="mt-5 mb-1 w-80 max-w-screen-lg">
+            <div className="mb-1 flex flex-col gap-5">
               <div className="">
                 <Select label="Select your country">
                   <Option>Rwanda</Option>
@@ -51,7 +51,7 @@ const SignUp = () => {
               <Input type="password" size="lg" label="Confirm Password" />
             </div>
 
-            <Button className="signup-button mt-6 tracking-widest">
+            <Button className="signup-button mt-4 tracking-widest">
               Register
             </Button>
 
