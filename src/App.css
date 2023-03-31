@@ -48,6 +48,16 @@
  margin: 10%;
  
 }
+.heading-content{
+  width: 310px;
+  height: 36px;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 25px;
+  color: #000000;
+}
 .btn{
   background-color: blue;
   border-radius: 15px;

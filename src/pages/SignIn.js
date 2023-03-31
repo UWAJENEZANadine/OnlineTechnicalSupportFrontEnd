@@ -20,8 +20,8 @@ import {
       <div className='form-card'>
     <Card color="transparent" shadow={false}>
     
-      <Typography  className="font-bold text-2xl text-black p-4">
-       ONLINE TECHNICAL SUPPORT
+      <Typography  className=" heading-content font-normal">
+       Online Technical Support
       </Typography>
     
       <form className=" w-70 max-w-screen-lg sm:w-96 ">
@@ -53,13 +53,13 @@ import {
         </Typography>
         <div className='flex justify-content-between items-center space-x-5 pt-2'>
           <a href='#'>
-            <GoogleIcon className='signup with text-red-400 border-solid border-2 border-[#ad01b0;] rounded-'/>
+            <GoogleIcon className='signup with text-red-400 border-solid border-2 border-[#2353CF;] rounded-full'/>
           </a>
           <a href='#'>
-            <FacebookIcon className='signup with text-blue-800 border-solid border-2 border-[#ad01b0;] ml-5'/>
+            <FacebookIcon className='signup with text-blue-800 border-solid border-2border-[#2353CF;] ml-5 rounded-full'/>
           </a>
           <a href='#'>
-            <AppleIcon className='signup with text-black border-solid border-2  border-[#ad01b0;] ml-5'/>
+            <AppleIcon className='signup with text-black border-solid border-2  border-[#2353CF;] ml-5 rounded-full'/>
           </a>
      
      </div>
