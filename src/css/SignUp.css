@@ -6,7 +6,8 @@
 }
 .signup-container {
   font-family: "Josefin Sans", sans-serif;
-  padding: 5rem;
+  padding: 8rem;
+  width: 100%;
  
 }
 
@@ -17,11 +18,13 @@
   transform: translate(-50%, -50%);
 }
 .signup-button {
-  background-color: #ad01b0;
-  font-size: 1rem;
+  background-color: #2353CF;
+  line-height: 30px;
+  padding: 5px;
+  gap: 10px;
   border-radius: 20px;
-  width: 234px;
-  height: 56px;
+  width: 171px;
+  height: 40px;
 }
 .create-account-container {
   width: 310px;
