@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300&family=Josefin+Sans:wght@100;200;300;400&family=Poppins:wght@100;200;300;400&family=Roboto:ital,wght@0,100;0,300;0,400;1,300&display=swap');
 .Home-content{
     
     background-color:rgb(248 250 252);
@@ -6,6 +7,9 @@
 .title{
     font-weight: bold;
     color: lightsteelblue;
+}
+.content{
+    font-family: 'Poppins', sans-serif;
 }
 
 
