@@ -9,7 +9,9 @@
 }
 .form-card{
  margin: 10%;
- 
+}
+.content-SignIn{
+ height: 70vh;
 }
 .btn{
   background-color: blue;
