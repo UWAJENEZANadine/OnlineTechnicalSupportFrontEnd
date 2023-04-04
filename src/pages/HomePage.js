@@ -8,15 +8,15 @@ const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
-    'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29tcHV0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbXB1dGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1551739440-5dd934d3a94a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGNvbXB1dGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bGFwdG9wfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1602016736566-7ed6a58894bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1587614382231-d1590f0039e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 5) % images.length);
-    }, 1000);
+      setCurrentIndex((prevIndex) => (prevIndex + 10) % images.length);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [images]);
@@ -52,14 +52,14 @@ const HomePage = () => {
           height: '80vh',
         }}
       >
-        <div className='content'>
-        <Typography className='text-white text-4xl font-medium'>
+        <div className='content p-5 '>
+        <Typography className='text-gray-950 text-4xl font-medium'>
           Support
         </Typography>
-        <Typography className="text1">Fix any computer related isuue@ For Free </Typography>
-        <Typography className="text2">Virus removal, software installation & configuration, computer performance,peripheral support.</Typography>
+        <Typography className="text-gray-400 font-extrabold text-2xl">Fix any computer related isue@ For Free </Typography>
+        <Typography className="text-gray-400 text-sm">Virus removal, software installation & configuration, computer performance,peripheral support.</Typography>
   
-        <Typography className="text3">Chat with tech Support Using your Emails.</Typography>
+        <Typography className="text-gray-400 font-extrabold text-2xl">Chat with tech Support Using your Emails.</Typography>
         </div>
       </div>
       
