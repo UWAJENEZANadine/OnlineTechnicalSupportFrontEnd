@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
-
+import '../App.css'
 const SignIn = () => {
 
   return (
-    <div className='content-SignIn grid grid-cols-2 m-4  '>
+    <div className='content-SignIn grid grid-cols-2 m-4 '>
       <div className='pic-SigIn'>
         <img src='https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbiUyMHNpdHRpbmclMjBvbiUyMGNoYWlyJTIwd3JpdHRpbmclMjBvbiUyMGxhcHRvcCUyMHdpdGglMjByaWdodCUyMHNpZGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60' 
         style={{width:"45vw",height:"60vh"}}/>

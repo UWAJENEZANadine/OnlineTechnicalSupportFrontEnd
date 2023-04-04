@@ -1,17 +1,14 @@
 
 .content-SignIn{
- height: 90vh;
+ height: 75vh;
 
 }
 .pic-SigIn{
   margin: 12%;
-  padding-top: 2px;
+
 }
 .form-card{
  margin: 10%;
-}
-.content-SignIn{
- height: 70vh;
 }
 .btn{
   background-color: blue;
