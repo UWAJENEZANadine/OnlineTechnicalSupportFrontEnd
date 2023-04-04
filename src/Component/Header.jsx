@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
  const Header = () => {
   return (
-    <div className=' Header-content flex justify-content-between items-center space-x-10 grid grid-cols-3 bg-cyan-900 '>
+    <div className=' Header-content flex justify-content-between items-center space-x-10 grid grid-cols-3 bg-[#1c5077] '>
       <div>
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4UF5a0VcXxmpqW3E1JLOqNr1VQn7wDKedvw&usqp=CAU'
          style={{maxHeight:"50px"}}/>

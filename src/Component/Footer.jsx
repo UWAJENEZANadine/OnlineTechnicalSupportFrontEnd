@@ -10,7 +10,7 @@ import "../css/Footer.css";
 const Footer = () => {
   return (
     <section className="footer bg-[#1c5077]">
-      <div className="text-gray-300 pt-20 pr-20 pl-20 text-center grid grid-cols-3 gap-4">
+      <div className="text-gray-300 pt-10 pr-16 pl-16 text-center grid grid-cols-3 gap-4">
         <div className="">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4UF5a0VcXxmpqW3E1JLOqNr1VQn7wDKedvw&usqp=CAU"
