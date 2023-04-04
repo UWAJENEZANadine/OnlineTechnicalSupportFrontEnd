@@ -16,7 +16,7 @@ const HomePage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 10) % images.length);
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [images]);
@@ -53,13 +53,13 @@ const HomePage = () => {
         }}
       >
         <div className='content p-5 '>
-        <Typography className='text-gray-950 text-4xl font-medium'>
-          Support
+        <Typography className='text-blue-500 text-4xl font-medium text-center'>
+          welcome to Technical Support
         </Typography>
-        <Typography className="text-gray-400 font-extrabold text-2xl">Fix any computer related isue@ For Free </Typography>
-        <Typography className="text-gray-400 text-sm">Virus removal, software installation & configuration, computer performance,peripheral support.</Typography>
+        {/* <Typography className="text-white">Fix any computer related isue@ For Free </Typography>
+        <Typography className="">Virus removal, software installation & configuration, computer performance,peripheral support.</Typography>
   
-        <Typography className="text-gray-400 font-extrabold text-2xl">Chat with tech Support Using your Emails.</Typography>
+        <Typography className="">Chat with tech Support Using your Emails.</Typography> */}
         </div>
       </div>
       
