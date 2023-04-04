@@ -1,4 +1,14 @@
 Header-content{
     height: 30vh;
-  background-color: black;
+   
+}
+
+.btn{
+  width: 70px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgb(245 245 244);
+  
+ 
+
 }

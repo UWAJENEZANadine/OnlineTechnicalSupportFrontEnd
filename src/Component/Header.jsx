@@ -8,15 +8,20 @@ import { Link } from 'react-router-dom';
 
  const Header = () => {
   return (
-    <div className=' Header-content flex justify-content-between items-center space-x-5   '>
+    <div className=' Header-content flex justify-content-between items-center space-x-10 grid grid-cols-3 bg-cyan-900 '>
+      <div>
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4UF5a0VcXxmpqW3E1JLOqNr1VQn7wDKedvw&usqp=CAU'
-         style={{maxHeight:"60px"}}/>
-         
-        <NavLink to="">Home</NavLink>
-        <NavLink to="">About Us</NavLink>
-        <NavLink to="">Services</NavLink>
+         style={{maxHeight:"50px"}}/>
+         </div>
+         <div className=' link-items space-x-5'>
+        <NavLink to="">HOME</NavLink>
+        <NavLink to="">ABOUT US</NavLink>
+        <NavLink to="">SERVICES</NavLink>
+        </div>
+        <div className='btn'>
 
         <Link to='SignIn'>Sign In</Link>
+        </div>
        
          
 

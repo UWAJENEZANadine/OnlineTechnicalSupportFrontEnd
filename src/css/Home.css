@@ -7,28 +7,6 @@
     font-weight: bold;
     color: lightsteelblue;
 }
-  .content {
-    padding: 5px;
-    
-   
-    width: 48vw;
-    border: 1px solid white;
-    text-align: center;
-  }
-  .text1{
-    color: wheat;
-    size: 50px;
-    font-family: Arial, Helvetica, sans-serif;
-  
-  }
-  .text2{
-    font-family: cursive;
-    size:30px;
-    color: grey;
-  }
-  .text3{
-    color: wheat;
-    size: 50px;
-    font-family:Arial, Helvetica, sans-serif;
-  }
+
+
   
