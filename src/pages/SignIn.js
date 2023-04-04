@@ -1,16 +1,15 @@
 import React from 'react'
 import {
-    Card, Input,Checkbox, Button,Typography,} from "@material-tailwind/react";
-  import App from '../App';
-  import { Link } from "react-router-dom";
-  import GoogleIcon from "@mui/icons-material/Google";
-  import FacebookIcon from "@mui/icons-material/Facebook";
-  import AppleIcon from "@mui/icons-material/Apple";
-  
- 
+  Card, Input, Checkbox, Button, Typography,
+} from "@material-tailwind/react";
+import App from '../App';
+import { Link } from "react-router-dom";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import AppleIcon from "@mui/icons-material/Apple";
 
- const SignIn = () => {
-  
+const SignIn = () => {
+
   return (
     <div className='content-SignIn grid grid-cols-2 m-4  '>
       <div className='pic-SigIn'>
@@ -77,9 +76,9 @@ import {
     </div>
     </div>
 
-    
 
-    
+
+
   )
 }
 export default SignIn;
