@@ -52,10 +52,10 @@ const HomePage = () => {
           height: '80vh',
         }}
       >
-        <div className='content p-5 '>
-        <Typography className='text-blue-500 text-4xl font-medium text-center'>
-          welcome to Technical Support
-        </Typography>
+        <div className='content p-5'>
+        <p className='text-blue-500 pt-20  text-4xl font-medium text-center'>
+          Welcome to online Technical Support
+        </p>
         {/* <Typography className="text-white">Fix any computer related isue@ For Free </Typography>
         <Typography className="">Virus removal, software installation & configuration, computer performance,peripheral support.</Typography>
   
