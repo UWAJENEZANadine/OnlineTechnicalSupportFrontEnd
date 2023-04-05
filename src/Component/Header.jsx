@@ -18,9 +18,9 @@ import { Link } from 'react-router-dom';
         <NavLink to="">ABOUT US</NavLink>
         <NavLink to="">SERVICES</NavLink>
         </div>
-        <div className='btn text-blue-800 bg-'>
+        <div className='text-blue-800 bg-'>
 
-        <Link to='SignIn'>Sign In</Link>
+        <Link to='SignIn' className=' bg-black p-4 rounded'>Sign In</Link>
         </div>
        
          
