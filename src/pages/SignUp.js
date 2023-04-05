@@ -1,81 +1,105 @@
-import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { Select, Option } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import AppleIcon from "@mui/icons-material/Apple";
+import React from "react";
 import picture from "../Assets/christin-hume-mfB1B1s4sMc-unsplash.jpg";
 import "../css/SignUp.css";
 
+
 const SignUp = () => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 signup-container w-auto">
-      <div className="w-full">
-        <img
-          src={picture}
-          alt="picture"
-          style={{ widith: "100%", height: "120vh" }}
-          className= "rounded-xl rounded-r-none"
-        />
-      </div>
-      <div className="bg-white p-5 pl-12 rounded-xl w-full rounded-l-none">
-        <Card color="transparent" shadow={false} className="card-container-data">
-          <Typography
-            color="gray"
-            className="create-account-container font-normal "
-          >
-            Create an Account
-          </Typography>
-          <form className="mt-5 mb-1 w-80 max-w-screen-lg">
-            <div className="mb-1 flex flex-col gap-5">
-              <div className="">
-                <Select label="Select your country">
-                  <Option>Rwanda</Option>
-                  <Option>Nigeria</Option>
-                  <Option>Ethiopia</Option>
-                  <Option>Angola</Option>
-                  <Option>South Africa</Option>
-                  <Option>Uganda</Option>
-                  <Option>Burundi</Option>
-                  <Option>Tanzania</Option>
-                  <Option>DRC</Option>
-                  <Option>Kenya</Option>
-                </Select>
-              </div>
-              <Input size="lg" label="Email" />
-              <Input size="lg" label="Phone number" type="tel" />
-              <Input size="lg" label="User name" />
-              <Input size="lg" label="First name" />
-              <Input size="lg" label="Last name" />
-              <Input type="password" size="lg" label="Password" />
-              <Input type="password" size="lg" label="Confirm Password" />
+    <>
+      <div
+        className="min-h-screen py-20 Signup-container bg-gray-100"
+      >
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
+            <div
+              className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
+              style={{ backgroundImage: `url(${picture})` }}
+            >
+              <h1 className="text-white text-3xl mb-3">
+                Welcome to online technical Support
+              </h1>
             </div>
+            <div className="w-full lg:w-1/2 py-16 px-12">
+              <h2 className="text-3xl mb-4">Register</h2>
+              <form action="#">
+                <div>
+                  <select
+                    id="countries"
+                    className="border rounded border-gray-400 py-1 px-2block w-full p-2.5 text-gray-400 dark:placeholder-gray-400 "
+                  >
+                    <option selected>Select country</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                  </select>
+                </div>
+                <div className="mt-5">
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    className="border border-gray-400 py-1 px-2 w-full rounded"
+                  />
+                </div>
+                <div className="mt-5">
+                  <input
+                    type="phone"
+                    placeholder="Phone number"
+                    className="border border-gray-400 py-1 px-2 w-full rounded"
+                  />
+                </div>
 
-            <Button className="signup-button mt-4 tracking-widest">
-              Register
-            </Button>
+                <div className="grid grid-cols-2 gap-5 mt-5">
+                  <input
+                    type="text"
+                    placeholder="First name"
+                    className="border border-gray-400 py-1 px-2 rounded"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Last name"
+                    className="border border-gray-400 py-1 px-2 rounded"
+                  />
+                </div>
 
-            <div className="">
-              <Typography className="pt-3">or signup with</Typography>
-              <a href="#" className="">
-                <GoogleIcon className="signup with text-red-400 border-solid border-2 border-[#2353CF;] rounded-full p-1" />
-              </a>
-              <a href="#">
-                <FacebookIcon className="signup with text-blue-800 border-solid border-2 border-[#2353CF;] ml-5 rounded-full p-1" />
-              </a>
-              <a href="#">
-                <AppleIcon className="signup with text-black border-solid border-2  border-[#2353CF;] ml-5 rounded-full p-1" />
-              </a>
+                <div className="mt-5">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    className="border border-gray-400 py-1 px-2 w-full rounded"
+                  />
+                </div>
+                <div className="mt-5">
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    className="border border-gray-400 py-1 px-2 w-full rounded"
+                  />
+                </div>
+                <div className="mt-5">
+                  <input type="checkbox" className="border border-gray-400" />
+                  <span>
+                    I accept the{" "}
+                    <a href="#" className="text-[#2353CF] font-semibold">
+                      Terms of Use
+                    </a>{" "}
+                    &{" "}
+                    <a href="#" className="text-[#2353CF] font-semibold">
+                      Privacy Policy
+                    </a>
+                  </span>
+                </div>
+                <div className="mt-5">
+                  <button className="w-full bg-[#2353CF] py-3 text-center text-white rounded">
+                    Register Now
+                  </button>
+                </div>
+              </form>
             </div>
-            <Typography className="pt-3">
-              Already have an Account{" "}
-              <Link to="/SignIn" className="text-blue-300">
-                      Sign In</Link>
-            </Typography>
-          </form>
-        </Card>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
