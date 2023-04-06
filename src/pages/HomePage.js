@@ -59,12 +59,12 @@ const HomePage = () => {
           <p className="text-blue-500 pt-20  text-4xl font-medium text-center">
             Welcome to online Technical Support
           </p>
-          {/* <Typography className="text-white">Fix any computer related isue@ For Free </Typography>
-        <Typography className="">Virus removal, software installation & configuration, computer performance,peripheral support.</Typography>
-  
-        <Typography className="">Chat with tech Support Using your Emails.</Typography> */}
-        </div>
+          
       </div>
+      </div>
+
+
+
     </div>
   );
 };

@@ -13,14 +13,13 @@ import { Link } from 'react-router-dom';
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4UF5a0VcXxmpqW3E1JLOqNr1VQn7wDKedvw&usqp=CAU'
          style={{maxHeight:"50px"}}/>
          </div>
-         <div className=' link-items space-x-5'>
+         <div className=' link-items space-x-5 text-white-500'>
         <NavLink to="">HOME</NavLink>
         <NavLink to="">ABOUT US</NavLink>
         <NavLink to="">SERVICES</NavLink>
         </div>
-        <div className='text-blue-800 bg-'>
-
-        <Link to='SignIn' className=' bg-black p-4 rounded'>Sign In</Link>
+        <div className='text-white-500'>
+          <Link to='SignIn'><Button className=' bg-blue-700 w-60'>Sign In</Button></Link>
         </div>
        
          
