@@ -3,6 +3,8 @@ import { Typography } from "@material-tailwind/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../css/Home.css";
+import { Link } from 'react-router-dom';
+import { Button } from '@material-tailwind/react';
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,19 +54,24 @@ const HomePage = () => {
           height: "80vh",
         }}
       >
-        <div className="card-container p-10" style={{backgroundImage: `url("http://www.askpcexperts.com/images/headtext-bg.png")`, backgroundRepeat:"no-repeat"}}>
-          <h1 className="header-card text-white text-2xl">
-            <span> online</span> technical support
+        <div className="card-container p-9" style={{backgroundImage: `url("http://www.askpcexperts.com/images/headtext-bg.png")`, backgroundRepeat:"no-repeat"}}>
+          <h1 className="header-card text-black text-2xl">
+            <span > support</span>
+            Fix any computer related issue@ For Free
           </h1>
-          <p className="text-blue-500 pt-20  text-4xl font-medium text-center">
-            Welcome to online Technical Support
-          </p>
-          {/* <Typography className="text-white">Fix any computer related isue@ For Free </Typography>
-        <Typography className="">Virus removal, software installation & configuration, computer performance,peripheral support.</Typography>
-  
-        <Typography className="">Chat with tech Support Using your Emails.</Typography> */}
+          Virus removal,software installation &configuration, computer performance,peripheral support.
+          <p className="text-black ">
+            Chat with tech support using your Emails.
+            <div className='text-white-500'>
+          <Link to='SignIn'><Button className='mybtn bg-blue-700 w-50'>Sign In</Button></Link>
         </div>
+          </p>
+          
       </div>
+      </div>
+
+
+
     </div>
   );
 };
