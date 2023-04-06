@@ -1,13 +1,4 @@
-<<<<<<< Updated upstream
 import React from "react";
-=======
-import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { Select, Option } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
-
->>>>>>> Stashed changes
 import picture from "../Assets/christin-hume-mfB1B1s4sMc-unsplash.jpg";
 import "../css/SignUp.css";
 

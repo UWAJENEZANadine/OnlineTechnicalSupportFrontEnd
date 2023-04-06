@@ -36,24 +36,22 @@
 }
 .card-container h1 span{
     position: absolute;
-    top: -5px;
-    left: 95px;
-    display: block;
+    top: -3px;
+    left: 85px;
+    /* display: block; */
     text-transform: uppercase;
-    font-size: 1.6rem;
-    color: #fff;
-    letter-spacing: 3px;
+    /* font-size: 1.4rem; */
+    color:black;
+    /* letter-spacing: 3px; */
    
 
 }
-.wdth500{
-    width: 300px;
-    height: auto;
+.mybtn{
     position: absolute;
-    top: 170px;
-    right: 0;
-    z-index: 888;
+    left: 90px;
+    text-align: center;
 }
+
   
 
   
