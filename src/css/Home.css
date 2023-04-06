@@ -14,7 +14,6 @@
     color: lightsteelblue;
 }
 .card-container{
-   
     font-family: 'Poppins', sans-serif;
     width: 300px;
     height: auto;
@@ -22,6 +21,7 @@
     top: 170px;
     right: 0;
     z-index: 888;
+    margin-right: 3rem;
    
 }
 .header-card{
