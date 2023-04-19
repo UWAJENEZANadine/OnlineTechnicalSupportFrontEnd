@@ -5,6 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import "../css/Home.css";
 import { Link } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
+import PageLayout from "./PageLayout";
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,6 +44,7 @@ const HomePage = () => {
   };
 
   return (
+    <PageLayout>
     <div className="items-content">
       <div
         className="item1"
@@ -73,6 +75,7 @@ const HomePage = () => {
 
 
     </div>
+    </PageLayout>
   );
 };
 

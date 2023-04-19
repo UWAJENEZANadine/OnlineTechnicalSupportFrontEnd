@@ -1,11 +1,13 @@
 import React from "react";
 import picture from "../Assets/christin-hume-mfB1B1s4sMc-unsplash.jpg";
 import "../css/SignUp.css";
+import PageLayout from "./PageLayout";
 
 
 const SignUp = () => {
   return (
     <>
+    <PageLayout>
       <div
         className="min-h-screen py-20 Signup-container bg-gray-100"
       >
@@ -101,6 +103,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      </PageLayout>
     </>
   );
 };
