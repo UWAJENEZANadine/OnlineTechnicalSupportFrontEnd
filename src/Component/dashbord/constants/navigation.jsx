@@ -19,38 +19,38 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 	},
 	{
 		key: 'category',
-		label: 'category',
-		path: '/category',
+		label: 'Category',
+		path: 'category',
 		icon: <HiOutlineCube />
 	},
 	{
 		key: 'chats',
 		label: 'chats',
-		path: '/chats',
+		path: 'chats',
 		icon: <HiOutlineShoppingCart />
 	},
 	{
 		key: 'schedules',
 		label: 'schedules',
-		path: '/schedules',
+		path: 'schedules',
 		icon: <HiOutlineUsers />
 	},
 	{
 		key: 'profile',
 		label: 'profile',
-		path: '/profile',
+		path: 'profile',
 		icon: <HiOutlineDocumentText />
 	},
 	{
 		key: 'settings',
 		label: 'settings',
-		path: '/settings',
+		path: 'settings',
 		icon: <HiOutlineCog />
 	},
 	{
 		key: 'logout',
 		label: 'logout',
-		path: '/logout',
+		path: 'logout',
 		icon: <HiOutlineLogout/>
 	}
 ]
