@@ -1,11 +1,11 @@
 import React from "react";
 
-const Experts = () =>{
+const Chats = () =>{
   return(
     <div>
-      <h1>Experts</h1>
+      <h1>chats page</h1>
     </div>
   )
 }
 
-export default Experts
+export default Chats;
