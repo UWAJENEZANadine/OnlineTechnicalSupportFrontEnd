@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   Input,
@@ -11,12 +11,35 @@ import { Link } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 import "../App.css";
 import PageLayout from "./PageLayout";
+
+
+
+
 const SignIn = () => {
-  // const logi (url,{})
-  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async () =>{
+    try{
+      const response = await axios.post("https://web-production-634d.up.railway.app/login", {
+        email,
+        password
+      });
+      if (response.data.success){
+        window.location.href="/dashbord"
+      }else{
+        setError("Invalid credentials, please again")
+      }
+    } catch(error){
+      console.log(error)
+      setError("Error occured, Please try again Later")
+    }
+  }
+
 
   return (
     <PageLayout>
@@ -33,19 +56,25 @@ const SignIn = () => {
               ONLINE TECHNICAL SUPPORT
             </Typography>
 
-            <form className=" w-70 max-w-screen-lg sm:w-80 ">
+            <form onSubmit={(e)=> e.preventDefault()} className=" w-70 max-w-screen-lg sm:w-80 ">
               <div className="flex flex-col gap-2 ">
                 <label className="font-bold">Email</label>
                 <Input
                   type="Email"
+                  value={email}
+                  onChange={(e)=>setEmail(e.target.value)}
                   placeholder="Enter your Email"
-                  style={{ borderRadius: "20px" }}
+                  // style={{ borderRadius: "20px" }}
+                 
                 />
                 <label className="font-bold">Password</label>
                 <Input
                   type="password"
+                  value={password}
+                  onChange={(e)=>setPassword(e.target.value)}
                   placeholder="Enter your Password"
-                  style={{ borderRadius: "20px" }}
+                  // style={{ borderRadius: "20px" }}
+                  
                 />
               </div>
               <Checkbox
@@ -62,8 +91,10 @@ const SignIn = () => {
               />
 
               <Button
-                className="  mt-5 p-2 w-60 m-2 items-center bg-blue-700 text-white text-sm"
-                onClick={() => navigate("/dashboard")}
+                className="  mt-5 p-2 w-full m-2 items-center bg-blue-700 text-white text-sm"
+                // onClick={() => navigate("/dashboard")}
+
+                onClick={handleLogin}
               >
                 Log in
               </Button>
@@ -71,7 +102,7 @@ const SignIn = () => {
 
               <div className="flex justify-content-between items-center space-x-5 pt-2 ">
                 <a href="#">
-                  <GoogleIcon className="signup with text-red-400 border-solid border-2 border-[#2353CF;] rounded-full" />
+                  <GoogleIcon className="signup with text-red-400 rounded-full" />
                 </a>
                 <a href="#">
                   <FacebookIcon className="signup with text-blue-800 border-solid border-2border-[#2353CF;] ml-5 rounded-full" />
