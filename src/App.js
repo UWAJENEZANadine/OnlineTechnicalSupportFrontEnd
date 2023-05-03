@@ -12,12 +12,15 @@ import Profile from "./Component/dashbord/profile";
 import Schedule from "./Component/dashbord/schedules";
 import Settings from "./Component/dashbord/settings";
 import Logout from "./Component/dashbord/Logout";
+import Technician from "./pages/Technician";
+
 
 function App() {
   return (
+    
     <>
 
-      <Routes>      
+      {/* <Routes>      
         <Route path="" element={<HomePage />} />
         <Route path="HomePage" element={<HomePage />} />
         <Route path="SignUp" element={<SignUp />} />
@@ -35,10 +38,17 @@ function App() {
             <Route path="logout" element={<Logout/>} />
           </Route>
           
-        </Routes>
-     
+        </Routes> */}
+        <Technician/>
+       
+       
     </>
+    
+    
+    
   );
+  
+ 
 }
 
 export default App;
