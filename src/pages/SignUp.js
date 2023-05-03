@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import picture from "../Assets/christin-hume-mfB1B1s4sMc-unsplash.jpg";
 import "../css/SignUp.css";
 import PageLayout from "./PageLayout";
-import axios, { Axios } from "axios";
+import axios from "axios";
+// import swal from "sweetalert";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -11,7 +12,6 @@ const SignUp = () => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [password, setPassword] = useState("");
-  // const [confirmpass, setConfirmpass] = useState("");
   const [message, setMessage] = useState("");
 
   const handleusername = (event) => {
@@ -50,6 +50,8 @@ const SignUp = () => {
     setPassword(password);
   };
 
+
+
    /*
 
 {
@@ -62,11 +64,7 @@ const SignUp = () => {
 }
     */
 
-  // const handleconfirmpass = (event) => {
-  //   const confirmpass = event.target.value;
-  //   console.log(confirmpass);
-  //   setConfirmpass(confirmpass);
-  // };
+ 
   const submitUser = async (e) => {
     e.preventDefault();
     const userdata = {
@@ -76,11 +74,12 @@ const SignUp = () => {
       first_name: fname,
       last_name: lname,
       password: password,
-      // confirmpass: confirmpass,
+    
     };
+  
     await axios
-      .post("http://127.0.0.1:8000/register/", JSON.stringify(userdata))
-      .then((result) => {
+      .post("http://127.0.0.1:8000/register/", userdata)
+      .then(result => {
         setMessage(result.data.msg);
         console.log(result.data);
       });
@@ -89,8 +88,11 @@ const SignUp = () => {
   return (
     <>
       <PageLayout>
-        <div className="min-h-screen py-20 Signup-container bg-gray-100">
-         {message ?  <div className="text-center text-green-900"><h5>{message}</h5></div>:<></>}
+       
+       
+        <div className="min-h-screen py-20 Signup-container bg-gray-100 ">
+          
+             swal(hello)
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
               <div
@@ -104,26 +106,6 @@ const SignUp = () => {
               <div className="w-full lg:w-1/2 py-16 px-12">
                 <h2 className="text-3xl mb-4">Register</h2>
                 <form onSubmit={submitUser}>
-                  <div>
-                    <select
-                      id="countries"
-                      className="border rounded border-gray-400 py-1 px-2block w-full p-2.5 text-gray-400 dark:placeholder-gray-400 "
-                    >
-                      <option className="text-black">Select country</option>
-                      <option value="US" className="text-black">
-                        United States
-                      </option>
-                      <option value="CA" className="text-black">
-                        Canada
-                      </option>
-                      <option value="FR" className="text-black">
-                        France
-                      </option>
-                      <option value="DE" className="text-black">
-                        Germany
-                      </option>
-                    </select>
-                  </div>
                   <div className="mt-5">
                     <input
                       type="text"
@@ -178,28 +160,6 @@ const SignUp = () => {
                       onChange={(e) => handlepassword(e)}
                     />
                   </div>
-                  {/* <div className="mt-5">
-                    <input
-                      type="password"
-                      name="confirmpass"
-                      placeholder="Confirm Password"
-                      className="border border-gray-400 py-1 px-2 w-full rounded"
-                      onChange={(e) => handleconfirmpass(e)}
-                    />
-                  </div> */}
-                  <div className="mt-5">
-                    <input type="checkbox" className="border border-gray-400" />
-                    <span>
-                      I accept the{" "}
-                      <a href="#" className="text-[#2353CF] font-semibold">
-                        Terms of Use
-                      </a>{" "}
-                      &{" "}
-                      <a href="#" className="text-[#2353CF] font-semibold">
-                        Privacy Policy
-                      </a>
-                    </span>
-                  </div>
                   <div className="mt-5">
                     <button
                       type="submit"
@@ -214,7 +174,10 @@ const SignUp = () => {
           </div>
         </div>
       </PageLayout>
+      
     </>
+
+    
   );
 };
 
