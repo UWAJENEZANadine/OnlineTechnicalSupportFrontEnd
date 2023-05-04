@@ -3,7 +3,7 @@ import picture from "../Assets/christin-hume-mfB1B1s4sMc-unsplash.jpg";
 import "../css/SignUp.css";
 import PageLayout from "./PageLayout";
 import axios from "axios";
-// import swal from "sweetalert";
+import swal from "sweetalert";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -63,7 +63,14 @@ const SignUp = () => {
  "password": “<password>"
 }
     */
-
+const handleClick = () =>{
+  swal({
+    title: "Successfully Registered",
+    text: "Your data is saved!",
+    icon: "success",
+    button: "ok",
+  });
+}
  
   const submitUser = async (e) => {
     e.preventDefault();
@@ -92,7 +99,7 @@ const SignUp = () => {
        
         <div className="min-h-screen py-20 Signup-container bg-gray-100 ">
           
-             swal(hello)
+             
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
               <div
@@ -162,6 +169,7 @@ const SignUp = () => {
                   </div>
                   <div className="mt-5">
                     <button
+                      onClick={handleClick}
                       type="submit"
                       className="w-full bg-[#2353CF] py-3 text-center text-white rounded"
                     >
