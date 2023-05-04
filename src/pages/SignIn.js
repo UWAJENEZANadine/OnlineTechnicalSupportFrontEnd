@@ -77,11 +77,10 @@ const SignIn = () => {
                 containerProps={{ className: "-ml-2.5" }}
               />
 
-              <Button
+              <Button type="submit"
                 className="  mt-5 p-2 w-full m-2 items-center bg-blue-700 text-white text-sm"
-                onClick={() => navigate("/dashboard")}
-
-                // onClick={handleLogin}
+              
+                
               >
                 Log in
               </Button>
@@ -97,9 +96,11 @@ const SignIn = () => {
               </div>
               <Typography className="pt-3">
                 Do not have an Account{" "}
+              
                 <Link to="/SignUp" className="text-blue-300">
                   Sign Up
                 </Link>
+               
               </Typography>
             </form>
           </Card>
