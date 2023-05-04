@@ -15,38 +15,17 @@ import axios from "axios";
 import "../App.css";
 import PageLayout from "./PageLayout";
 
-
-
-
 const SignIn = () => {
-
-  const handleSubmit = async (event)=>{
-    event.preventDefault();
-
-  }
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async () =>{
-    try{
-      const response = await axios.post("http://127.0.0.1:8000/login/", {
-        email,
-        password
-      });
-      if (response.data.success){
-        window.location.href="/dashbord"
-      }else{
-        setError("Invalid credentials, please again")
-      }
-    } catch(error){
-      console.log(error)
-      setError("Error occured, Please try again Later")
-    }
-  }
-
   const navigate = useNavigate();
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    navigate("/dashboard")
+  };
 
   return (
     <PageLayout>
@@ -63,25 +42,26 @@ const SignIn = () => {
               ONLINE TECHNICAL SUPPORT
             </Typography>
 
-            <form onSubmit={handleSubmit} className=" w-70 max-w-screen-lg sm:w-80 ">
+            <form
+              onSubmit={handleSubmit}
+              className=" w-70 max-w-screen-lg sm:w-80 "
+            >
               <div className="flex flex-col gap-2 ">
                 <label className="font-bold">Email</label>
                 <Input
                   type="Email"
                   value={email}
-                  onChange={(e)=>setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your Email"
                   // style={{ borderRadius: "20px" }}
-                 
                 />
                 <label className="font-bold">Password</label>
                 <Input
                   type="password"
                   value={password}
-                  onChange={(e)=>setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your Password"
                   // style={{ borderRadius: "20px" }}
-                  
                 />
               </div>
               <Checkbox
