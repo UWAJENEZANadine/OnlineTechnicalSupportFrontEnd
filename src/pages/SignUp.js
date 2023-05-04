@@ -4,6 +4,7 @@ import "../css/SignUp.css";
 import PageLayout from "./PageLayout";
 import axios from "axios";
 import swal from "sweetalert";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -50,9 +51,7 @@ const SignUp = () => {
     setPassword(password);
   };
 
-
-
-   /*
+  /*
 
 {
 "username": “<username>",
@@ -63,16 +62,22 @@ const SignUp = () => {
  "password": “<password>"
 }
     */
-const handleClick = () =>{
-  swal({
-    title: "Successfully Registered",
-    text: "Your data is saved!",
-    icon: "success",
-    button: "ok",
-  });
-}
- 
+  // const handleClick = () =>{
+  //   swal({
+  //     title: "Successfully Registered",
+  //     text: "Your data is saved!",
+  //     icon: "success",
+  //     button: "ok",
+  //   });
+  // }
+
   const submitUser = async (e) => {
+    swal({
+      title: "Successfully Registered",
+      text: "Your data is saved!",
+      icon: "success",
+      button: "ok",
+    });
     e.preventDefault();
     const userdata = {
       username: username,
@@ -81,12 +86,11 @@ const handleClick = () =>{
       first_name: fname,
       last_name: lname,
       password: password,
-    
     };
-  
+
     await axios
       .post("http://127.0.0.1:8000/register/", userdata)
-      .then(result => {
+      .then((result) => {
         setMessage(result.data.msg);
         console.log(result.data);
       });
@@ -95,11 +99,7 @@ const handleClick = () =>{
   return (
     <>
       <PageLayout>
-       
-       
         <div className="min-h-screen py-20 Signup-container bg-gray-100 ">
-          
-             
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
               <div
@@ -120,6 +120,7 @@ const handleClick = () =>{
                       placeholder="username"
                       className="border border-gray-400 py-1 px-2 w-full rounded"
                       onChange={(e) => handleusername(e)}
+                      required
                     />
                   </div>
                   <div className="mt-5">
@@ -129,6 +130,7 @@ const handleClick = () =>{
                       placeholder="Email"
                       className="border border-gray-400 py-1 px-2 w-full rounded"
                       onChange={(e) => handleemail(e)}
+                      required
                     />
                   </div>
                   <div className="mt-5">
@@ -138,6 +140,7 @@ const handleClick = () =>{
                       placeholder="Phone number"
                       className="border border-gray-400 py-1 px-2 w-full rounded"
                       onChange={(e) => handlephone(e)}
+                      required
                     />
                   </div>
 
@@ -148,6 +151,7 @@ const handleClick = () =>{
                       placeholder="First name"
                       className="border border-gray-400 py-1 px-2 rounded"
                       onChange={(e) => handlefname(e)}
+                      required
                     />
                     <input
                       type="text"
@@ -155,6 +159,7 @@ const handleClick = () =>{
                       placeholder="Last name"
                       className="border border-gray-400 py-1 px-2 rounded"
                       onChange={(e) => handlelname(e)}
+                      required
                     />
                   </div>
 
@@ -165,16 +170,23 @@ const handleClick = () =>{
                       placeholder="Password"
                       className="border border-gray-400 py-1 px-2 w-full rounded"
                       onChange={(e) => handlepassword(e)}
+                      required
                     />
                   </div>
                   <div className="mt-5">
                     <button
-                      onClick={handleClick}
+                      // onClick={handleClick}
                       type="submit"
                       className="w-full bg-[#2353CF] py-3 text-center text-white rounded"
                     >
                       Register Now
                     </button>
+                  </div>
+                  <div className="pt-3">
+                    If you have an Account
+                    <Link to="/SignIn" className="text-blue-300 pl-2 underline">
+                          Sign In
+                    </Link>
                   </div>
                 </form>
               </div>
@@ -182,10 +194,7 @@ const handleClick = () =>{
           </div>
         </div>
       </PageLayout>
-      
     </>
-
-    
   );
 };
 
