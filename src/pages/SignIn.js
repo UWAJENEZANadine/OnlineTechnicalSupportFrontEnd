@@ -18,13 +18,17 @@ import PageLayout from "./PageLayout";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate("/dashboard")
+    if (email.length === 0) {
+      alert("please enter valid credential");
+    } else if (password.length === 0) {
+      alert("please enter valid credential");
+    }
+
+    navigate("/dashboard");
   };
 
   return (
@@ -49,19 +53,21 @@ const SignIn = () => {
               <div className="flex flex-col gap-2 ">
                 <label className="font-bold">Email</label>
                 <Input
+                  className="pl-7"
                   type="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your Email"
-                  // style={{ borderRadius: "20px" }}
+                  required
                 />
                 <label className="font-bold">Password</label>
                 <Input
+                  className="pl-7"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your Password"
-                  // style={{ borderRadius: "20px" }}
+                  required
                 />
               </div>
               <Checkbox
@@ -77,10 +83,10 @@ const SignIn = () => {
                 containerProps={{ className: "-ml-2.5" }}
               />
 
-              <Button type="submit"
+              <Button
+                type="submit"
                 className="  mt-5 p-2 w-full m-2 items-center bg-blue-700 text-white text-sm"
-              
-                
+                // onClick={() => navigate("/dashboard")}
               >
                 Log in
               </Button>
@@ -96,11 +102,9 @@ const SignIn = () => {
               </div>
               <Typography className="pt-3">
                 Do not have an Account{" "}
-              
                 <Link to="/SignUp" className="text-blue-300">
                   Sign Up
                 </Link>
-               
               </Typography>
             </form>
           </Card>
