@@ -20,7 +20,7 @@ function App() {
     
     <>
 
-      {/* <Routes>      
+      <Routes>      
         <Route path="" element={<HomePage />} />
         <Route path="HomePage" element={<HomePage />} />
         <Route path="SignUp" element={<SignUp />} />
@@ -38,8 +38,8 @@ function App() {
             <Route path="logout" element={<Logout/>} />
           </Route>
           
-        </Routes> */}
-        <Technician/>
+        </Routes>
+        
        
        
     </>
