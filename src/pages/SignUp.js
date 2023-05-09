@@ -1,81 +1,200 @@
-import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { Select, Option } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import AppleIcon from "@mui/icons-material/Apple";
+import React, { useState } from "react";
 import picture from "../Assets/christin-hume-mfB1B1s4sMc-unsplash.jpg";
 import "../css/SignUp.css";
+import PageLayout from "./PageLayout";
+import axios from "axios";
+import swal from "sweetalert";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleusername = (event) => {
+    const username = event.target.value;
+    console.log(username);
+    setUsername(username);
+  };
+
+  const handleemail = (event) => {
+    const email = event.target.value;
+    console.log(email);
+    setEmail(email);
+  };
+
+  const handlephone = (event) => {
+    const phone_number = event.target.value;
+    console.log(phone_number);
+    setPhone(phone_number);
+  };
+
+  const handlefname = (event) => {
+    const first_name = event.target.value;
+    console.log(first_name);
+    setFname(first_name);
+  };
+
+  const handlelname = (event) => {
+    const last_name = event.target.value;
+    console.log(last_name);
+    setLname(last_name);
+  };
+
+  const handlepassword = (event) => {
+    const password = event.target.value;
+    console.log(password);
+    setPassword(password);
+  };
+
+  /*
+
+{
+"username": “<username>",
+ "email": “<email>”,
+ "phone_number”: “<tel>”,
+“first_name”:”<firstname>”,
+“last_name”:”<lastname>”,
+ "password": “<password>"
+}
+    */
+  // const handleClick = () =>{
+  //   swal({
+  //     title: "Successfully Registered",
+  //     text: "Your data is saved!",
+  //     icon: "success",
+  //     button: "ok",
+  //   });
+  // }
+
+  const submitUser = async (e) => {
+    swal({
+      title: "Successfully Registered",
+      text: "Your data is saved!",
+      icon: "success",
+      button: "ok",
+    });
+    e.preventDefault();
+    const userdata = {
+      username: username,
+      email: email,
+      phone_number: phone,
+      first_name: fname,
+      last_name: lname,
+      password: password,
+    };
+
+    await axios
+      .post("http://127.0.0.1:8000/register/", userdata)
+      .then((result) => {
+        setMessage(result.data.msg);
+        console.log(result.data);
+      });
+  };
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 signup-container w-auto">
-      <div className="w-full">
-        <img
-          src={picture}
-          alt="picture"
-          style={{ widith: "100%", height: "120vh" }}
-          className= "rounded-xl rounded-r-none"
-        />
-      </div>
-      <div className="bg-white p-5 pl-12 rounded-xl w-full rounded-l-none">
-        <Card color="transparent" shadow={false} className="card-container-data">
-          <Typography
-            color="gray"
-            className="create-account-container font-normal "
-          >
-            Create an Account
-          </Typography>
-          <form className="mt-5 mb-1 w-80 max-w-screen-lg">
-            <div className="mb-1 flex flex-col gap-5">
-              <div className="">
-                <Select label="Select your country">
-                  <Option>Rwanda</Option>
-                  <Option>Nigeria</Option>
-                  <Option>Ethiopia</Option>
-                  <Option>Angola</Option>
-                  <Option>South Africa</Option>
-                  <Option>Uganda</Option>
-                  <Option>Burundi</Option>
-                  <Option>Tanzania</Option>
-                  <Option>DRC</Option>
-                  <Option>Kenya</Option>
-                </Select>
+    <>
+      <PageLayout>
+        <div className="min-h-screen py-20 Signup-container bg-gray-100 ">
+          <div className="container mx-auto">
+            <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
+              <div
+                className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
+                style={{ backgroundImage: `url(${picture})` }}
+              >
+                <h1 className="text-white text-3xl mb-3">
+                  Welcome to online technical Support
+                </h1>
               </div>
-              <Input size="lg" label="Email" />
-              <Input size="lg" label="Phone number" type="tel" />
-              <Input size="lg" label="User name" />
-              <Input size="lg" label="First name" />
-              <Input size="lg" label="Last name" />
-              <Input type="password" size="lg" label="Password" />
-              <Input type="password" size="lg" label="Confirm Password" />
-            </div>
+              <div className="w-full lg:w-1/2 py-16 px-12">
+                <h2 className="text-3xl mb-4">Register</h2>
+                <form onSubmit={submitUser}>
+                  <div className="mt-5">
+                    <input
+                      type="text"
+                      name="username"
+                      placeholder="username"
+                      className="border border-gray-400 py-1 px-2 w-full rounded"
+                      onChange={(e) => handleusername(e)}
+                      required
+                    />
+                  </div>
+                  <div className="mt-5">
+                    <input
+                      type="text"
+                      name="email"
+                      placeholder="Email"
+                      className="border border-gray-400 py-1 px-2 w-full rounded"
+                      onChange={(e) => handleemail(e)}
+                      required
+                    />
+                  </div>
+                  <div className="mt-5">
+                    <input
+                      type="phone"
+                      name="phone_number"
+                      placeholder="Phone number"
+                      className="border border-gray-400 py-1 px-2 w-full rounded"
+                      onChange={(e) => handlephone(e)}
+                      required
+                    />
+                  </div>
 
-            <Button className="signup-button mt-4 tracking-widest">
-              Register
-            </Button>
+                  <div className="grid grid-cols-2 gap-5 mt-5">
+                    <input
+                      type="text"
+                      name="first_name"
+                      placeholder="First name"
+                      className="border border-gray-400 py-1 px-2 rounded"
+                      onChange={(e) => handlefname(e)}
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="last_name"
+                      placeholder="Last name"
+                      className="border border-gray-400 py-1 px-2 rounded"
+                      onChange={(e) => handlelname(e)}
+                      required
+                    />
+                  </div>
 
-            <div className="">
-              <Typography className="pt-3">or signup with</Typography>
-              <a href="#" className="">
-                <GoogleIcon className="signup with text-red-400 border-solid border-2 border-[#2353CF;] rounded-full p-1" />
-              </a>
-              <a href="#">
-                <FacebookIcon className="signup with text-blue-800 border-solid border-2 border-[#2353CF;] ml-5 rounded-full p-1" />
-              </a>
-              <a href="#">
-                <AppleIcon className="signup with text-black border-solid border-2  border-[#2353CF;] ml-5 rounded-full p-1" />
-              </a>
+                  <div className="mt-5">
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      className="border border-gray-400 py-1 px-2 w-full rounded"
+                      onChange={(e) => handlepassword(e)}
+                      required
+                    />
+                  </div>
+                  <div className="mt-5">
+                    <button
+                      // onClick={handleClick}
+                      type="submit"
+                      className="w-full bg-[#2353CF] py-3 text-center text-white rounded"
+                    >
+                      Register Now
+                    </button>
+                  </div>
+                  <div className="pt-3">
+                    If you have an Account
+                    <Link to="/SignIn" className="text-blue-300 pl-2 underline">
+                          Sign In
+                    </Link>
+                  </div>
+                </form>
+              </div>
             </div>
-            <Typography className="pt-3">
-              Already have an Account{" "}
-              <Link to="/SignIn" className="text-blue-300">
-                      Sign In</Link>
-            </Typography>
-          </form>
-        </Card>
-      </div>
-    </div>
+          </div>
+        </div>
+      </PageLayout>
+    </>
   );
 };
 
