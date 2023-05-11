@@ -59,9 +59,10 @@ const HomePage = () => {
         <div className="card-container p-9 text-white" style={{backgroundImage: `url("http://www.askpcexperts.com/images/headtext-bg.png")`, backgroundRepeat:"no-repeat"}}>
           <h1 className="header-card text-white text-2xl">
             <span> support</span>
-            Fix any computer related issue for Free.
+            Fix any computer related issue@ for Free.
           </h1>
-          Virus removal,software installation &configuration, computer performance,peripheral support.
+          Virus removal, software installation &configuration, computer performance,peripheral support.
+          <br></br>
           <p className="text-white">
             Chat with tech support using your Emails.
             <div className='text-white-500'>
