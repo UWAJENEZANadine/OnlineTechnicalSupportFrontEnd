@@ -10,7 +10,7 @@ import picture from "../Assets/support.png";
  const Header = () => {
   return (
     <div className='flex justify-around items-center space-x-10 bg-[#1c5077] py-7 px-5 text-white font-bold'>
-      <div className="w-full lg:w-1/6 p-8 bg-no-repeat bg-cover "
+      <div className="w-full lg:w-1/6 p-6 bg-no-repeat bg-cover "
               style={{ backgroundImage: `url(${picture})` }}>
         {/* <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4UF5a0VcXxmpqW3E1JLOqNr1VQn7wDKedvw&usqp=CAU'
          style={{maxHeight:"50px"}}/> */}
@@ -23,8 +23,8 @@ import picture from "../Assets/support.png";
         {/* <div className='text-white-500'>
           <Link to='SignIn'><Button className=' bg-blue-700 w-60'>Sign In</Button></Link>
         </div> */}
-       
-         
+
+
 
     </div>
   )

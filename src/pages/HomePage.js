@@ -47,7 +47,7 @@ const HomePage = () => {
     <PageLayout>
     <div className="items-content">
       <div
-        className="item1"
+        className="item1 bg-gray-300"
         style={{
           backgroundImage: `url(${images[currentIndex]})`,
           backgroundSize: "cover",
@@ -56,19 +56,19 @@ const HomePage = () => {
           height: "80vh",
         }}
       >
-        <div className="card-container p-9" style={{backgroundImage: `url("http://www.askpcexperts.com/images/headtext-bg.png")`, backgroundRepeat:"no-repeat"}}>
-          <h1 className="header-card text-black text-2xl">
-            <span > support</span>
-            Fix any computer related issue@ For Free
+        <div className="card-container p-9 text-white" style={{backgroundImage: `url("http://www.askpcexperts.com/images/headtext-bg.png")`, backgroundRepeat:"no-repeat"}}>
+          <h1 className="header-card text-white text-2xl">
+            <span> support</span>
+            Fix any computer related issue for Free.
           </h1>
           Virus removal,software installation &configuration, computer performance,peripheral support.
-          <p className="text-black ">
+          <p className="text-white">
             Chat with tech support using your Emails.
             <div className='text-white-500'>
           <Link to='SignIn'><Button className='mybtn bg-blue-700 w-50'>Sign In</Button></Link>
         </div>
           </p>
-          
+
       </div>
       </div>
 
