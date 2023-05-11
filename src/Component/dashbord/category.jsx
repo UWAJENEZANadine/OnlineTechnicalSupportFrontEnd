@@ -1,46 +1,34 @@
-import React from 'react'
 import picturess from "../../Assets/software.png";
-import pic from "../../Assets/window.png"
-import picss from "../../Assets/computer.png"
-import sec from "../../Assets/security.png"
-import "../../css/category.css"
+import "../../css/category.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
+function Category() {
+  const [data, setData] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:8000/category/")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-
-const Category = () =>{
-  return(
-    <div className='grid grid-cols-2 gap-2  '>
-      <div className='p-8' >
-         <div className='flex justify-start items-center gap-6 p-2'>
-          <img src={picturess} alt=''style={{width:"25px"}}/>
-          <p2 className='text-black'>Software support</p2>
-          
+  return (
+    <div>
+      {data.map((item) => (
+        <div className="p-8" key={item.id}>
+          <div className="flex justify-start items-center gap-6 p-2">
+            <img src={picturess} alt="" style={{ width: "25px" }} />
+            <p2 className="text-black"> {item.name} </p2>
           </div>
-         <div className='flex justify-start items-center gap-6 p-2'>
-          <img src={pic} style={{width:"25px"}}/>
-          <p3 className='text-black'>Window services</p3>
-          
-          </div>
-         
-         <div className='flex justify-start items-center gap-6 p-2'>
-          <img src={picss} style={{width:"25px"}}/>
-          <p5 className='text-black'> computer sevices</p5>
-        
-          </div>
-          <div className='flex justify-start items-center gap-6 p-2'>
-            <img src={sec} style={{width:"25px"}}/>
-            <p1 className='text-black'>security support</p1>
-          </div>
-         
-  
-      </div>
-      <div className='page' >
-        <text className='text text-white'>Enjoy the new Experiences of chating with technician in the world
-        Connect the people around the world for free</text>
-      </div>
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
 export default Category;
