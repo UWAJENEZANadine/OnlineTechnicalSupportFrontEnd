@@ -89,7 +89,7 @@ const SignUp = () => {
     };
 
     await axios
-      .post("http://127.0.0.1:8000/register/", userdata)
+      .post("http://ec2-3-120-32-80.eu-central-1.compute.amazonaws.com/register/", userdata)
       .then((result) => {
         setMessage(result.data.msg);
         console.log(result.data);
