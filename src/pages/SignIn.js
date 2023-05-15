@@ -16,20 +16,31 @@ import "../App.css";
 import PageLayout from "./PageLayout";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (email.length === 0) {
-      alert("please enter valid credential");
-    } else if (password.length === 0) {
-      alert("please enter valid credential");
-    }
+    // if (email.length === 0) {
+    //   alert("please enter valid credential");
+    // } else if (password.length === 0) {
+    //   alert("please enter valid credential");
+    // }
 
+    const userdata = {
+      username: username,
+      password: password
+    };
+    await axios
+      .post("http://127.0.0.1:8000/login/", userdata)
+      .then((result) => {
+        // setMessage(result.data.msg);
+        console.log(result.data);
+      });
     navigate("/dashboard");
   };
+
 
   return (
     <PageLayout>
@@ -54,10 +65,10 @@ const SignIn = () => {
                 <label className="font-bold">Email</label>
                 <Input
                   className="pl-7"
-                  type="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your Email"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your Username"
                   required
                 />
                 <label className="font-bold">Password</label>
