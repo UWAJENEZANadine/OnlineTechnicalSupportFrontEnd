@@ -8,7 +8,7 @@ function Category() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/category/")
+      .get("http://127.0.0.1:8000/subcategory/")
       .then((response) => {
         setData(response.data);
       })

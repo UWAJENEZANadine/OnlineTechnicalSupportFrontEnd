@@ -38,8 +38,14 @@ const SignIn = () => {
         // setMessage(result.data.msg);
         console.log(result.data);
         localStorage.setItem('access_token', result.data['access']);
+        navigate("/dashboard");
+      }).catch((error) => {
+        console.log(error);
+        window.alert("Incorrect username or password");
+        setUsername("");
+        setPassword("");
+
       });
-    navigate("/dashboard");
   };
 
 
