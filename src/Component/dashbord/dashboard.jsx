@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { IoBagHandle } from "react-icons/io5";
-import { HostUrl } from "../../pages/Database";
+import { HostUrl } from "../../pages/Configurations";
 // import axios from "axios";
 
 const Dashboard = () => {

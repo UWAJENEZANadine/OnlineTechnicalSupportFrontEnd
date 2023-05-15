@@ -5,7 +5,7 @@ import PageLayout from "./PageLayout";
 import axios from "axios";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
-import { HostUrl } from "./Database";
+import { HostUrl } from "./Configurations";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");

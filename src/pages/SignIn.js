@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 import PageLayout from "./PageLayout";
-import { HostUrl } from "./Database";
+import { HostUrl } from "./Configurations";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
