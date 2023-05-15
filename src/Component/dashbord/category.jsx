@@ -23,7 +23,11 @@ function Category() {
         <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>
           <div className="flex justify-start items-center gap-6 p-2">
             <img src={picturess} alt="" style={{ width: "25px" }} />
+            {/* <p2 className="text-black"> {item.category.name} </p2> */}
             <p2 className="text-black"> {item.name} </p2>
+            <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+              View Supporters
+            </div>
           </div>
         </div>
       ))}

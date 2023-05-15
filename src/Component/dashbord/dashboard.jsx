@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { IoBagHandle } from "react-icons/io5";
+import { HostUrl } from "../../pages/Database";
 // import axios from "axios";
 
 const Dashboard = () => {
@@ -10,7 +11,7 @@ const Dashboard = () => {
     const access_token = localStorage.getItem('access_token');
     console.log("Token is ", access_token);
     axios
-      .get("http://127.0.0.1:8000/number-categories/")
+      .get(HostUrl + "number-categories/")
       .then((res) => {
         setnumberOfCategory(res.data["number"])
       })

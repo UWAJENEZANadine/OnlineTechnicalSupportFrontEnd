@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 import PageLayout from "./PageLayout";
+import { HostUrl } from "./Database";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -33,7 +34,7 @@ const SignIn = () => {
       password: password
     };
     await axios
-      .post("http://127.0.0.1:8000/login/", userdata)
+      .post(HostUrl+"login/", userdata)
       .then((result) => {
         // setMessage(result.data.msg);
         console.log(result.data);

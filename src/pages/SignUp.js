@@ -5,6 +5,7 @@ import PageLayout from "./PageLayout";
 import axios from "axios";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
+import { HostUrl } from "./Database";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -89,7 +90,7 @@ const SignUp = () => {
     };
 
     await axios
-      .post("http://ec2-3-120-32-80.eu-central-1.compute.amazonaws.com/register/", userdata)
+      .post(HostUrl + "register/", userdata)
       .then((result) => {
         setMessage(result.data.msg);
         console.log(result.data);
