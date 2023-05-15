@@ -7,6 +7,8 @@ const Dashboard = () => {
   const [numberOfCategory, setnumberOfCategory] = useState(null);
 
   useEffect(() => {
+    const access_token = localStorage.getItem('access_token');
+    console.log("Token is ", access_token);
     axios
       .get("http://127.0.0.1:8000/number-categories/")
       .then((res) => {
@@ -15,6 +17,8 @@ const Dashboard = () => {
       .catch((err) => {
         console.log(err);
       });
+
+
   }, []);
 
   return (

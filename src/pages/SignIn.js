@@ -37,6 +37,7 @@ const SignIn = () => {
       .then((result) => {
         // setMessage(result.data.msg);
         console.log(result.data);
+        localStorage.setItem('access_token', result.data['access']);
       });
     navigate("/dashboard");
   };
