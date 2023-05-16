@@ -17,16 +17,15 @@ import Technician from "./pages/Technician";
 
 function App() {
   return (
-    
-    <>
 
-      <Routes>      
+    <>
+      <Routes>
         <Route path="" element={<HomePage />} />
         <Route path="HomePage" element={<HomePage />} />
         <Route path="SignUp" element={<SignUp />} />
         <Route path="SignIn" element={<SignIn />} />
       </Routes>
-      
+
         <Routes>
           <Route path="/dashboard" element={<Layout />}>
             <Route index element={<Dashboard />} />
@@ -36,19 +35,20 @@ function App() {
             <Route path="schedules" element={<Schedule/>} />
             <Route path="settings" element={<Settings/>} />
             <Route path="logout" element={<Logout/>} />
+            {/* <Route path="tech" element={<Technician/>} /> */}
           </Route>
-          
+
         </Routes>
-        
-       
-       
+
+
+
     </>
-    
-    
-    
+
+
+
   );
-  
- 
+
+
 }
 
 export default App;

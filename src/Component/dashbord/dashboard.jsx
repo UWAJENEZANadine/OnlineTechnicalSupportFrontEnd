@@ -6,10 +6,13 @@ import { HostUrl } from "../../pages/Configurations";
 
 const Dashboard = () => {
   const [numberOfCategory, setnumberOfCategory] = useState(null);
+  const [numberOfsubCategory, setnumberOfSubCategory] = useState(null);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('access_token');
     // console.log("Token is ", access_token);
+
+
     axios
       .get(HostUrl + "number-categories/",
       {headers : {
@@ -23,8 +26,21 @@ const Dashboard = () => {
         console.log(err);
       });
 
+      axios
+      .get(HostUrl + "number-subcategories/",
+      {headers : {
+        Authorization: `Bearer ${accessToken}`
+      },
+    })
+      .then((res) => {
+        setnumberOfSubCategory(res.data["number"])
+      })
+      .catch((err) => {
+        console.log(err);
+      })
 
-  }, []);
+
+  },[]);
 
   return (
     <>
@@ -52,13 +68,13 @@ const Dashboard = () => {
           </div>
           <div className="pl-4">
             <span className="text-sm text-gray-500 font-light">
-              Total categories
+              Total Sub Categories
             </span>
             <div className="flex items-center">
               <strong className="text-xl text-gray-700 font-semibold">
-                $145
+              {numberOfsubCategory}
               </strong>
-              <span className="text-sm text-green-500 pl-2">+243</span>
+              <span className="text-sm text-green-500 pl-2">Sub Categories</span>
             </div>
           </div>
         </div>

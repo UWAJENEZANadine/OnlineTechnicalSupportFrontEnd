@@ -3,7 +3,7 @@ import "../../css/category.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { HostUrl } from "../../pages/Configurations";
-
+import imagesupporter from "../../Assets/supporter.jpg";
 function Category() {
   const [data, setData] = useState([]);
   const [sdata, setSdata] = useState([]);
@@ -43,7 +43,7 @@ function Category() {
       <div className="w-3/12 bg-gray-50 p-4">
           <h2> ALL CATEGORIES </h2>
           {data.map((item) => (
-            <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>
+            <div className="p-2 ml-2 mt-4 bg-blue-gray-50 rounded" key={item.id}>
               <div className="flex justify-start items-center gap-6 p-2">
                 <img src={picturess} alt="" style={{ width: "25px" }} />
                 <p2
@@ -60,7 +60,7 @@ function Category() {
         </div><div className="w-3/12 bg-gray-50 p-4">
           <h2> SUB CATEGORIES </h2>
           {sdata.map((item) => (
-            <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>
+            <div className="p-2 ml-2 mt-4 rounded bg-blue-gray-50" key={item.id}>
               <div className="flex justify-start items-center gap-6 p-2">
                 <img src={picturess} alt="" style={{ width: "25px" }} />
                 <p2
@@ -75,12 +75,12 @@ function Category() {
           ))}
         </div>
 
-        <div className="w-3/12 p-4 bg-blue-200 ">
+        <div className="w-4/12 p-4 bg-blue-200 ">
           <h2> SUPPORTERS WE HAVE IN SELECTED CATEGORY</h2>
           {supporters.map((item) => (
-            <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>
+            <div className="p-2 ml-2 mt-4 rounded bg-blue-gray-50" key={item.id}>
               <div className="flex justify-start items-center gap-6 p-2">
-                <img src={picturess} alt="" style={{ width: "25px" }} />
+                <img src={imagesupporter} alt="" style={{ width: "25px" }} />
                 {/* <p2 className="text-black"> {item.category.name} </p2> */}
                 {/* <a href=""> */}
                 <p2 className="text-black cursor-pointer"> {item.name} </p2>
