@@ -2,45 +2,71 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { IoBagHandle } from "react-icons/io5";
 import { HostUrl } from "../../pages/Configurations";
-// import axios from "axios";
+
+
 
 const Dashboard = () => {
   const [numberOfCategory, setnumberOfCategory] = useState(null);
   const [numberOfsubCategory, setnumberOfSubCategory] = useState(null);
+  const [numberOfsupporters, setnumberOfsupporters] = useState(null);
+  const [numberOfconversatin, setnumberOfconversatin] = useState(null);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem("access_token");
     // console.log("Token is ", access_token);
 
-
     axios
-      .get(HostUrl + "number-categories/",
-      {headers : {
-        Authorization: `Bearer ${accessToken}`
-      },
-    })
+      .get(HostUrl + "number-categories/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
-        setnumberOfCategory(res.data["number"])
+        setnumberOfCategory(res.data["number"]);
       })
       .catch((err) => {
         console.log(err);
       });
 
-      axios
-      .get(HostUrl + "number-subcategories/",
-      {headers : {
-        Authorization: `Bearer ${accessToken}`
-      },
-    })
+    axios
+      .get(HostUrl + "number-subcategories/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
-        setnumberOfSubCategory(res.data["number"])
+        setnumberOfSubCategory(res.data["number"]);
       })
       .catch((err) => {
         console.log(err);
+      });
+
+    axios
+      .get(HostUrl + "number-supporters/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       })
+      .then((res) => {
+        setnumberOfsupporters(res.data["number"]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-
-  },[]);
+    axios
+      .get(HostUrl + "my-conversation/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        setnumberOfconversatin(res.data["number"]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <>
@@ -55,9 +81,8 @@ const Dashboard = () => {
             </span>
             <div className="flex items-center">
               <strong className="text-xl text-gray-700 font-semibold">
-                {numberOfCategory ? <h1>{numberOfCategory}</h1>  : <p> 0 </p>} Categories
-
-
+                {numberOfCategory ? <>{numberOfCategory}</> : <> 0 </>}
+                <span className="text-sm text-green-500 pl-2"> Categories</span>
               </strong>
             </div>
           </div>
@@ -72,9 +97,11 @@ const Dashboard = () => {
             </span>
             <div className="flex items-center">
               <strong className="text-xl text-gray-700 font-semibold">
-              {numberOfsubCategory}
+                {numberOfsubCategory ? <>{numberOfsubCategory}</> : 0}
+                <span className="text-sm text-green-500 pl-2">
+                  Sub Categories
+                </span>
               </strong>
-              <span className="text-sm text-green-500 pl-2">Sub Categories</span>
             </div>
           </div>
         </div>
@@ -84,13 +111,13 @@ const Dashboard = () => {
           </div>
           <div className="pl-4">
             <span className="text-sm text-gray-500 font-light">
-              Total categories
+              Total Supporters
             </span>
             <div className="flex items-center">
               <strong className="text-xl text-gray-700 font-semibold">
-                $145
+                {numberOfsupporters ? <>{numberOfsupporters}</> : 0}
+                <span className="text-sm text-green-500 pl-2">Supporters</span>
               </strong>
-              <span className="text-sm text-green-500 pl-2">+243</span>
             </div>
           </div>
         </div>
@@ -100,19 +127,23 @@ const Dashboard = () => {
           </div>
           <div className="pl-4">
             <span className="text-sm text-gray-500 font-light">
-              Total categories
+              Total Conversations
             </span>
             <div className="flex items-center">
               <strong className="text-xl text-gray-700 font-semibold">
-                $145
+                {numberOfconversatin ? <>{numberOfconversatin}</> : 0}
+                <span className="text-sm text-green-500 pl-2">
+                  Conversations
+                </span>
               </strong>
-              <span className="text-sm text-green-500 pl-2">+243</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div></div>
+      <div>
+
+      </div>
     </>
   );
 };

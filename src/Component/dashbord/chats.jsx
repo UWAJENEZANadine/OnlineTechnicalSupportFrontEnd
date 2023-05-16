@@ -9,7 +9,7 @@ import picturess from "../../Assets/software.png";
 
 const Chats = () => {
     const [data, setData] = useState([]);
-    const accessToken = localStorage.getItem('access_token'); 
+    const accessToken = localStorage.getItem('access_token');
 
     useEffect(() => {
         axios
@@ -28,7 +28,7 @@ const Chats = () => {
 
   return (
     <div className="flex">
-   <div className="w-1/3 bg-gray-50 p-4">
+   <div className="w-4/12 bg-gray-50 p-4">
           <h2> MY CHARTS </h2>
           {data.map((item) => (
             <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>
