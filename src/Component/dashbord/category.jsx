@@ -6,11 +6,12 @@ import { HostUrl } from "../../pages/Configurations";
 
 function Category() {
   const [data, setData] = useState([]);
+  const [sdata, setSdata] = useState([]);
   const [supporters, setSupporters] = useState([]);
 
   useEffect(() => {
     axios
-      .get(HostUrl + "subcategory/")
+      .get(HostUrl + "category/")
       .then((response) => {
         setData(response.data);
       })
@@ -19,18 +20,46 @@ function Category() {
       });
   }, []);
 
+  const updatesubcategories = (event, id)=>{
+    axios.get(HostUrl +'get-subcategory/'+id+'/')
+    .then((response)=>{
+      setSdata(response.data);
+      setSupporters([]);
+    }
+    )
+  }
+
   const updatesupporters = (event, id) => {
     axios.get(HostUrl + "get-supporters/" + id + "/").then((respsonse) => {
       setSupporters(respsonse.data);
       console.log(respsonse.data);
     });
   };
+
+
   return (
     <div>
       <div className="w-full flex">
-        <div className="w-1/3 bg-gray-50 p-4">
+      <div className="w-3/12 bg-gray-50 p-4">
           <h2> ALL CATEGORIES </h2>
           {data.map((item) => (
+            <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>
+              <div className="flex justify-start items-center gap-6 p-2">
+                <img src={picturess} alt="" style={{ width: "25px" }} />
+                <p2
+                  className="text-black cursor-pointer"
+                  onClick={(e) => updatesubcategories(e, item.id)}
+                >
+                  {" "}
+                  {item.name}{" "}
+                </p2>
+              </div>
+            </div>
+          ))}
+
+        </div><div className="w-3/12 bg-gray-50 p-4">
+          <h2> SUB CATEGORIES </h2>
+          {sdata.map((item) => (
             <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>
               <div className="flex justify-start items-center gap-6 p-2">
                 <img src={picturess} alt="" style={{ width: "25px" }} />
@@ -46,7 +75,7 @@ function Category() {
           ))}
         </div>
 
-        <div className="w-5/12 p-4 bg-blue-200 ">
+        <div className="w-3/12 p-4 bg-blue-200 ">
           <h2> SUPPORTERS WE HAVE IN SELECTED CATEGORY</h2>
           {supporters.map((item) => (
             <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>

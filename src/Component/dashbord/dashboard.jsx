@@ -8,10 +8,14 @@ const Dashboard = () => {
   const [numberOfCategory, setnumberOfCategory] = useState(null);
 
   useEffect(() => {
-    const access_token = localStorage.getItem('access_token');
-    console.log("Token is ", access_token);
+    const accessToken = localStorage.getItem('access_token');
+    // console.log("Token is ", access_token);
     axios
-      .get(HostUrl + "number-categories/")
+      .get(HostUrl + "number-categories/",
+      {headers : {
+        Authorization: `Bearer ${accessToken}`
+      },
+    })
       .then((res) => {
         setnumberOfCategory(res.data["number"])
       })

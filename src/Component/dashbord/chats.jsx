@@ -9,10 +9,15 @@ import picturess from "../../Assets/software.png";
 
 const Chats = () => {
     const [data, setData] = useState([]);
+    const accessToken = localStorage.getItem('access_token'); 
 
     useEffect(() => {
         axios
-          .get(HostUrl + "conversation/")
+          .get(HostUrl + "conversation/", {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          })
           .then((response) => {
             setData(response.data);
           })
