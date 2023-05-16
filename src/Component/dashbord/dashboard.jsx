@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { IoBagHandle } from "react-icons/io5";
 import { HostUrl } from "../../pages/Configurations";
-
+import chartimage  from "../../Assets/chart.png"
 
 
 const Dashboard = () => {
@@ -144,6 +144,9 @@ const Dashboard = () => {
       <div>
 
       </div>
+
+      <h2 className="ml-16 font-extrabold mt-4"> MY ACTIVITIES </h2>
+      <img src={chartimage} className="m-2 ml-8 w-9/12" />
     </>
   );
 };
