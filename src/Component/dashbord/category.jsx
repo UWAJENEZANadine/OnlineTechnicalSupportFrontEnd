@@ -4,22 +4,37 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { HostUrl } from "../../pages/Configurations";
 import imagesupporter from "../../Assets/supporter.jpg";
-import "../../css/Form.css"
+import "../../css/Form.css";
 function Category() {
   const [data, setData] = useState([]);
   const [sdata, setSdata] = useState([]);
   const [supporters, setSupporters] = useState([]);
-  const [showForm, setshowForm] = useState('none');
+  const [showForm, setshowForm] = useState("none");
   const [chosenSupporter, setchosenSupporter] = useState(null);
   const [chosenSupporterid, setchosenSupporterid] = useState(null);
   const [title, setTitle] = useState(null);
 
+  const accessToken = localStorage.getItem("access_token");
 
   useEffect(() => {
     axios
       .get(HostUrl + "category/")
       .then((response) => {
         setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get(HostUrl + "get-client-id/",{
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((response) => {
+        localStorage.setItem("client_id", response.data['id']);
+        console.log(" Client id is ", response.data['id'] )
       })
       .catch((error) => {
         console.log(error);
@@ -40,14 +55,14 @@ function Category() {
     });
   };
 
-  const fn_showtheform = (event, id, name) =>{
+  const fn_showtheform = (event, id, name) => {
     setchosenSupporterid(id);
     setchosenSupporter(name);
-    setshowForm('block');
+    setshowForm("block");
   };
 
-  const fn_hidetheform = (event) =>{
-    setshowForm('none');
+  const fn_hidetheform = (event) => {
+    setshowForm("none");
   };
 
   const handletitle = (event) => {
@@ -55,9 +70,27 @@ function Category() {
     setTitle(title);
   };
 
-  const submit_title = (event)=>{
-    axios.post(HostUrl + 'insert-conversation/')
-  }
+  const insert_conversation_in_db = (event) => {
+    event.preventDefault();
+    const client = localStorage.getItem("client_id");
+
+
+    const json_data = {
+      title: title,
+      supporter: chosenSupporterid.toString(),
+      client: client,
+    };
+    console.log(accessToken);
+
+    console.log(json_data);
+
+    axios
+      .post(HostUrl + "insert-conversation/",{
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }, json_data)
+  };
 
   return (
     <div>
@@ -114,8 +147,13 @@ function Category() {
                 <img src={imagesupporter} alt="" style={{ width: "25px" }} />
                 {/* <p2 className="text-black"> {item.category.name} </p2> */}
                 {/* <a href=""> */}
-                <p2 className="text-black cursor-pointer" onClick={(e) => fn_showtheform(e, item.id, item.name)}> {item.name} </p2>
-
+                <p2
+                  className="text-black cursor-pointer"
+                  onClick={(e) => fn_showtheform(e, item.id, item.name)}
+                >
+                  {" "}
+                  {item.name}{" "}
+                </p2>
 
                 {/* </a> */}
                 {/* <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
@@ -127,15 +165,31 @@ function Category() {
         </div>
       </div>
       {/* Popup form */}
-    <div id="popupForm" class="form-popup" style={{display:showForm}} >
-        <form class="form-container">
-          <span>Ask: {chosenSupporter} </span> <br/><br/>
-          <input type="text" placeholder=" Enter the title " name="title" className="p-1 w-10/12 border-gray-500 bg-gray-200 rounded" onChange={(e) => handletitle(e)} />
-          <br/><br/>
-          <button type="submit" class="btn bg-blue-200"  onChange={(e) => submit_title(e)}>
+      <div id="popupForm" class="form-popup" style={{ display: showForm }}>
+        <form class="form-container" onSubmit={insert_conversation_in_db}>
+          <span>Ask: {chosenSupporter} </span> <br />
+          <br />
+          <input
+            type="text"
+            placeholder=" Enter the title "
+            name="title"
+            className="p-1 w-10/12 border-gray-500 bg-gray-200 rounded"
+            onChange={(e) => handletitle(e)}
+          />
+          <br />
+          <br />
+          <button
+            type="submit"
+            class="btn bg-blue-200"
+            onClick={(e) => insert_conversation_in_db(e)}
+          >
             Ask
           </button>
-          <button type="button" class="btn cancel" onClick={(e) => fn_hidetheform(e)}>
+          <button
+            type="button"
+            class="btn cancel"
+            onClick={(e) => fn_hidetheform(e)}
+          >
             Close
           </button>
         </form>
