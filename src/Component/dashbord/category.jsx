@@ -85,11 +85,7 @@ function Category() {
     console.log(json_data);
 
     axios
-      .post(HostUrl + "insert-conversation/",{
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }, json_data)
+      .post(HostUrl + "insert-conversation/", json_data)
   };
 
   return (
