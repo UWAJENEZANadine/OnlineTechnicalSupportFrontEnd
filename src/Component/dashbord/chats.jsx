@@ -15,14 +15,12 @@ const Chats = () => {
     const [written_msg, setWritten_msg] = useState([]);
 
     const accessToken = localStorage.getItem('access_token');
+    const clientId = localStorage.getItem('client_id');
 
     useEffect(() => {
+      console.log(" Token still ",clientId);
         axios
-          .get(HostUrl + "conversation/", {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          })
+          .get(HostUrl + "get-conversation/"+ clientId +"/")
           .then((response) => {
             setData(response.data);
           })

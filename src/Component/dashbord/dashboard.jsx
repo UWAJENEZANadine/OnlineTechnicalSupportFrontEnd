@@ -28,6 +28,20 @@ const Dashboard = () => {
         console.log(err);
       });
 
+      axios
+      .get(HostUrl + "get-client-id/",{
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((response) => {
+        localStorage.setItem("client_id", response.data['id']);
+        console.log(" Client id is ", response.data['id'] )
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     axios
       .get(HostUrl + "number-subcategories/", {
         headers: {

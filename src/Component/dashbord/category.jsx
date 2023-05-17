@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { HostUrl } from "../../pages/Configurations";
 import imagesupporter from "../../Assets/supporter.jpg";
-import { Navigate, Redirect, useNavigate } from 'react-router-dom';
+import { Link, Navigate, Redirect, useNavigate } from 'react-router-dom';
 import "../../css/Form.css";
 function Category() {
   const [data, setData] = useState([]);
@@ -14,6 +14,9 @@ function Category() {
   const [chosenSupporter, setchosenSupporter] = useState(null);
   const [chosenSupporterid, setchosenSupporterid] = useState(null);
   const [title, setTitle] = useState(null);
+
+  // store useNavigate becz its function
+  const myUseNavigation = useNavigate();
 
   const accessToken = localStorage.getItem("access_token");
 
@@ -87,8 +90,9 @@ function Category() {
 
     axios
       .post(HostUrl + "insert-conversation/", json_data)
-      .then((respsonse) =>{      });
-
+      .then((respsonse) =>{
+      myUseNavigation("/dashboard/chats")
+          });
   };
 
   return (
@@ -177,13 +181,13 @@ function Category() {
           />
           <br />
           <br />
-          <button
+          <Link to="/chats"><button
             type="submit"
             class="btn bg-blue-200"
             onClick={(e) => insert_conversation_in_db(e)}
           >
             Ask
-          </button>
+          </button></Link>
           <button
             type="button"
             class="btn cancel"
