@@ -9,6 +9,8 @@ import picturess from "../../Assets/software.png";
 
 const Chats = () => {
     const [data, setData] = useState([]);
+    const [title, setTitle] = useState(null);
+    const [message, setMessage] = useState([]);
     const accessToken = localStorage.getItem('access_token');
 
     useEffect(() => {
@@ -26,6 +28,16 @@ const Chats = () => {
           });
       }, []);
 
+      const get_messages =(event, id, title) =>{
+        axios
+        .post(HostUrl +"get-message-list/"+id+"/", )
+        .then((response) =>{
+          setMessage(response.data);
+          setMessage(title);
+        })
+
+      }
+
   return (
     <div className="flex">
    <div className="w-4/12 bg-gray-50 p-4">
@@ -36,7 +48,7 @@ const Chats = () => {
                 <img src={picturess} alt="" style={{ width: "25px" }} />
                 <p2
                   className="text-black cursor-pointer"
-                //   onClick={(e) => updatesupporters(e, item.id)}
+                  onClick={(e) => get_messages(e, item.id, item.title)}
                 >
                   {item.title}
                 </p2>

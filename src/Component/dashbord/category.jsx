@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { HostUrl } from "../../pages/Configurations";
 import imagesupporter from "../../Assets/supporter.jpg";
+import { Navigate, Redirect, useNavigate } from 'react-router-dom';
 import "../../css/Form.css";
 function Category() {
   const [data, setData] = useState([]);
@@ -86,6 +87,8 @@ function Category() {
 
     axios
       .post(HostUrl + "insert-conversation/", json_data)
+      .then((respsonse) =>{      });
+
   };
 
   return (
