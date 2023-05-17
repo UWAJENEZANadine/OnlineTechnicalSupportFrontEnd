@@ -10,6 +10,9 @@ function Category() {
   const [sdata, setSdata] = useState([]);
   const [supporters, setSupporters] = useState([]);
   const [showForm, setshowForm] = useState('none');
+  const [chosenSupporter, setchosenSupporter] = useState(null);
+  const [chosenSupporterid, setchosenSupporterid] = useState(null);
+  const [title, setTitle] = useState(null);
 
 
   useEffect(() => {
@@ -37,13 +40,24 @@ function Category() {
     });
   };
 
-  const fn_showtheform = (event) =>{
+  const fn_showtheform = (event, id, name) =>{
+    setchosenSupporterid(id);
+    setchosenSupporter(name);
     setshowForm('block');
   };
 
   const fn_hidetheform = (event) =>{
     setshowForm('none');
   };
+
+  const handletitle = (event) => {
+    const title = event.target.value;
+    setTitle(title);
+  };
+
+  const submit_title = (event)=>{
+    axios.post(HostUrl + 'insert-conversation/')
+  }
 
   return (
     <div>
@@ -100,7 +114,7 @@ function Category() {
                 <img src={imagesupporter} alt="" style={{ width: "25px" }} />
                 {/* <p2 className="text-black"> {item.category.name} </p2> */}
                 {/* <a href=""> */}
-                <p2 className="text-black cursor-pointer" onClick={(e) => fn_showtheform(e, item.id)}> {item.name} </p2>
+                <p2 className="text-black cursor-pointer" onClick={(e) => fn_showtheform(e, item.id, item.name)}> {item.name} </p2>
 
 
                 {/* </a> */}
@@ -115,10 +129,11 @@ function Category() {
       {/* Popup form */}
     <div id="popupForm" class="form-popup" style={{display:showForm}} >
         <form class="form-container">
-          <input type="text" placeholder="Enter the chart title " name="title" className="p-1 w-7/12" />
-
-          <button type="submit" class="btn bg-blue-200">
-            Submit
+          <span>Ask: {chosenSupporter} </span> <br/><br/>
+          <input type="text" placeholder=" Enter the title " name="title" className="p-1 w-10/12 border-gray-500 bg-gray-200 rounded" onChange={(e) => handletitle(e)} />
+          <br/><br/>
+          <button type="submit" class="btn bg-blue-200"  onChange={(e) => submit_title(e)}>
+            Ask
           </button>
           <button type="button" class="btn cancel" onClick={(e) => fn_hidetheform(e)}>
             Close
