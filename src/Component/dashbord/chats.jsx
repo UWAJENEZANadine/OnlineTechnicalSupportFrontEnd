@@ -10,7 +10,7 @@ import picturess from "../../Assets/software.png";
 const Chats = () => {
     const [data, setData] = useState([]);
     const [title, setTitle] = useState(null);
-    const [message, setMessage] = useState([]);
+    const [messages, setMessages] = useState([]);
     const accessToken = localStorage.getItem('access_token');
 
     useEffect(() => {
@@ -30,10 +30,10 @@ const Chats = () => {
 
       const get_messages =(event, id, title) =>{
         axios
-        .post(HostUrl +"get-message-list/"+id+"/", )
+        .get(HostUrl +"get-message-list/"+id+"/", )
         .then((response) =>{
-          setMessage(response.data);
-          setMessage(title);
+          setMessages(response.data);
+          setTitle(title);
         })
 
       }
@@ -62,15 +62,14 @@ const Chats = () => {
           className="flex items-center justify-center mt-2"
           style={{ fontSize: "22px" }}
         >
-          {" "}
-          MICROSFT OFFICE DOESN'T SHOW NAVIGATION BAR{" "}
+          {title ?<> {title} </>:<> No conversation chosen </>}
         </h1>
 
-        <div
+          {messages.map((item)=> (
+            <div
           id="toast-notification"
           className="w-12/12 md:w-10/12 mx-4 p-4 text-gray-900 bg-white rounded-lg shadow mt-4  "
-          role="alert"
-        >
+          role="alert">
           <div className="flex items-center mb-3">
             <span className="mb-1 text-sm font-semibold text-gray-900">
               {" "}
@@ -112,7 +111,56 @@ const Chats = () => {
             </div>
           </div>
         </div>
+          ))}
 
+
+{/*
+
+<div
+          id="toast-notification"
+          className="w-12/12 md:w-10/12 mx-4 p-4 text-gray-900 bg-white rounded-lg shadow mt-4  "
+          role="alert">
+          <div className="flex items-center mb-3">
+            <span className="mb-1 text-sm font-semibold text-gray-900">
+              {" "}
+              Message{" "}
+            </span>
+          </div>
+          <div className="flex items-center">
+            <div className="relative inline-block shrink-0">
+              <img
+                className="w-12 h-12 rounded-full"
+                src={imageclient}
+                alt="Garage"
+              />
+              <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full">
+                <svg
+                  aria-hidden="true"
+                  className="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span className="sr-only">Message icon</span>
+              </span>
+            </div>
+            <div className="ml-3 text-sm font-normal">
+              <div className="text-sm text-blue-900 capitalize font-extrabold">
+                Client One
+              </div>
+              <div className="text-sm font-normal">
+                Hi! I got trouble of troubleshooting my Computer, It doesn't
+                show anything, What can I do?
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           id="toast-notification"
           className="w-11/12 md:w-10/12 mx-4 p-4 text-gray-900 bg-blue-100 rounded-lg shadow mt-4"
@@ -205,7 +253,7 @@ const Chats = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* form */}
 
