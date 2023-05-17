@@ -10,7 +10,10 @@ import picturess from "../../Assets/software.png";
 const Chats = () => {
     const [data, setData] = useState([]);
     const [title, setTitle] = useState(null);
+    const [convId, setConvID] = useState(null);
     const [messages, setMessages] = useState([]);
+    const [written_msg, setWritten_msg] = useState([]);
+
     const accessToken = localStorage.getItem('access_token');
 
     useEffect(() => {
@@ -34,8 +37,28 @@ const Chats = () => {
         .then((response) =>{
           setMessages(response.data);
           setTitle(title);
-        })
+          setConvID(id);
+        });
+      }
 
+      const handleSendMsg = (event) =>{
+        const get_message = event.target.value;
+        setWritten_msg(get_message);
+      }
+
+      const insert_message_in_db = (event) =>{
+        event.preventDefault();
+        const json_data ={
+          message:written_msg,
+          conversation:convId
+        }
+        axios.post(HostUrl+"insert-message/", json_data)
+        .then((response)=>{
+          // setMessages(response.data);
+          get_messages(event, convId, title);
+          setWritten_msg("");
+          // event.target.value = '';
+        })
       }
 
   return (
@@ -43,7 +66,7 @@ const Chats = () => {
    <div className="w-4/12 bg-gray-50 p-4">
           <h2> MY CHARTS </h2>
           {data.map((item) => (
-            <div className="p-2 ml-2 mt-1 bg-blue-gray-50" key={item.id}>
+            <div className="p-2 ml-2 mt-3 rounded bg-blue-gray-50" key={item.id}>
               <div className="flex justify-start items-center gap-6 p-2">
                 <img src={picturess} alt="" style={{ width: "25px" }} />
                 <p2
@@ -59,16 +82,18 @@ const Chats = () => {
 
       <div className="w-7/12">
         <h1
-          className="flex items-center justify-center mt-2"
+          className="flex items-center justify-center mt-2 uppercase"
           style={{ fontSize: "22px" }}
         >
           {title ?<> {title} </>:<> No conversation chosen </>}
         </h1>
 
           {messages.map((item)=> (
+
+            // { item.sender ? <div className="bg-blue-200">:<div className="bg-white"> }
             <div
           id="toast-notification"
-          className="w-12/12 md:w-10/12 mx-4 p-4 text-gray-900 bg-white rounded-lg shadow mt-4  "
+          className="w-12/12 md:w-10/12 mx-4 p-4 text-gray-900 rounded-lg shadow mt-4  "
           role="alert">
           <div className="flex items-center mb-3">
             <span className="mb-1 text-sm font-semibold text-gray-900">
@@ -102,11 +127,10 @@ const Chats = () => {
             </div>
             <div className="ml-3 text-sm font-normal">
               <div className="text-sm text-blue-900 capitalize font-extrabold">
-                Client One
+                {item.sender}
               </div>
-              <div className="text-sm font-normal">
-                Hi! I got trouble of troubleshooting my Computer, It doesn't
-                show anything, What can I do?
+              <div className="text-sm font-normal mt-2">
+              {item.message}
               </div>
             </div>
           </div>
@@ -257,7 +281,7 @@ const Chats = () => {
 
         {/* form */}
 
-        <form className="p-4 ml-4 mt-6 w-5/6  mb-2 bg-gray-500">
+        <form className="p-4 ml-4 mt-6 w-5/6  mb-2 bg-gray-500" onSubmit={(e)=>insert_message_in_db(e)}>
           <label for="chat" className="sr-only">
             Your message
           </label>
@@ -305,6 +329,8 @@ const Chats = () => {
               rows="1"
               className="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your message..."
+              onChange={(e)=>handleSendMsg(e)}
+              value={written_msg}
             ></textarea>
             <button
               type="submit"
