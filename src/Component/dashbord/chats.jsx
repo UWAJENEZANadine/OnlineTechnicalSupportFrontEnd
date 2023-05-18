@@ -6,280 +6,136 @@ import imagesupporter from "../../Assets/supporter.jpg";
 import { HostUrl } from "../../pages/Configurations";
 import picturess from "../../Assets/software.png";
 
-
 const Chats = () => {
-    const [data, setData] = useState([]);
-    const [title, setTitle] = useState(null);
-    const [convId, setConvID] = useState(null);
-    const [messages, setMessages] = useState([]);
-    const [written_msg, setWritten_msg] = useState([]);
+  const [data, setData] = useState([]);
+  const [title, setTitle] = useState(null);
+  const [convId, setConvID] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [written_msg, setWritten_msg] = useState([]);
 
-    const accessToken = localStorage.getItem('access_token');
-    const clientId = localStorage.getItem('client_id');
+  const accessToken = localStorage.getItem("access_token");
+  const clientId = localStorage.getItem("client_id");
 
-    useEffect(() => {
-      console.log(" Token still ",clientId);
-        axios
-          .get(HostUrl + "get-conversation/"+ clientId +"/")
-          .then((response) => {
-            setData(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }, []);
+  useEffect(() => {
+    console.log(" Token still ", clientId);
+    axios
+      .get(HostUrl + "get-conversation/" + clientId + "/")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-      const get_messages =(event, id, title) =>{
-        axios
-        .get(HostUrl +"get-message-list/"+id+"/", )
-        .then((response) =>{
-          setMessages(response.data);
-          setTitle(title);
-          setConvID(id);
-        });
-      }
+  const get_messages = (event, id, title) => {
+    axios.get(HostUrl + "get-message-list/" + id + "/").then((response) => {
+      setMessages(response.data);
+      setTitle(title);
+      setConvID(id);
+    });
+  };
 
-      const handleSendMsg = (event) =>{
-        const get_message = event.target.value;
-        setWritten_msg(get_message);
-      }
+  const handleSendMsg = (event) => {
+    const get_message = event.target.value;
+    setWritten_msg(get_message);
+  };
 
-      const insert_message_in_db = (event) =>{
-        event.preventDefault();
-        const json_data ={
-          message:written_msg,
-          conversation:convId
-        }
-        axios.post(HostUrl+"insert-message/", json_data)
-        .then((response)=>{
-          // setMessages(response.data);
-          get_messages(event, convId, title);
-          setWritten_msg("");
-          // event.target.value = '';
-        })
-      }
+  const insert_message_in_db = (event) => {
+    event.preventDefault();
+    const json_data = {
+      message: written_msg,
+      conversation: convId,
+    };
+    axios.post(HostUrl + "insert-message/", json_data).then((response) => {
+      // setMessages(response.data);
+      get_messages(event, convId, title);
+      setWritten_msg("");
+      // event.target.value = '';
+    });
+  };
 
   return (
     <div className="flex">
-   <div className="w-4/12 bg-gray-50 p-4">
-          <h2> MY CHARTS </h2>
-          {data.map((item) => (
-            <div className="p-2 ml-2 mt-3 rounded bg-blue-gray-50" key={item.id}>
-              <div className="flex justify-start items-center gap-6 p-2">
-                <img src={picturess} alt="" style={{ width: "25px" }} />
-                <p2
-                  className="text-black cursor-pointer"
-                  onClick={(e) => get_messages(e, item.id, item.title)}
-                >
-                  {item.title}
-                </p2>
-              </div>
+      <div className="w-4/12 bg-gray-50 p-4">
+        <h2> MY CHARTS </h2>
+        {data.map((item) => (
+          <div className="p-2 ml-2 mt-3 rounded bg-blue-gray-50" key={item.id}>
+            <div className="flex justify-start items-center gap-6 p-2">
+              <img src={picturess} alt="" style={{ width: "25px" }} />
+              <p2
+                className="text-black cursor-pointer"
+                onClick={(e) => get_messages(e, item.id, item.title)}
+              >
+                {item.title}
+              </p2>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
 
       <div className="w-7/12">
         <h1
           className="flex items-center justify-center mt-2 uppercase"
           style={{ fontSize: "22px" }}
         >
-          {title ?<> {title} </>:<> No conversation chosen </>}
+          {title ? <> {title} </> : <> No conversation chosen </>}
         </h1>
-
-          {messages.map((item)=> (
-
+        <div className="max-h-96">
+          {messages.map((item) => (
             // { item.sender ? <div className="bg-blue-200">:<div className="bg-white"> }
             <div
-          id="toast-notification"
-          className="w-12/12 md:w-10/12 mx-4 p-4 text-gray-900 rounded-lg shadow mt-4  "
-          role="alert">
-          <div className="flex items-center mb-3">
-            <span className="mb-1 text-sm font-semibold text-gray-900">
-              {" "}
-              Message{" "}
-            </span>
-          </div>
-          <div className="flex items-center">
-            <div className="relative inline-block shrink-0">
-              <img
-                className="w-12 h-12 rounded-full"
-                src={imageclient}
-                alt="Garage"
-              />
-              <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full">
-                <svg
-                  aria-hidden="true"
-                  className="w-4 h-4 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span className="sr-only">Message icon</span>
-              </span>
-            </div>
-            <div className="ml-3 text-sm font-normal">
-              <div className="text-sm text-blue-900 capitalize font-extrabold">
-                {item.sender}
+              id="toast-notification"
+              className="w-12/12 md:w-10/12 mx-4 p-4 text-gray-900 rounded-lg shadow mt-4  "
+              role="alert"
+            >
+              <div className="flex items-center mb-3">
+                <span className="mb-1 text-sm font-semibold text-gray-900">
+                  {" "}
+                  Message{" "}
+                </span>
               </div>
-              <div className="text-sm font-normal mt-2">
-              {item.message}
+              <div className="flex items-center">
+                <div className="relative inline-block shrink-0">
+                  <img
+                    className="w-12 h-12 rounded-full"
+                    src={imageclient}
+                    alt="Garage"
+                  />
+                  <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full">
+                    <svg
+                      aria-hidden="true"
+                      className="w-4 h-4 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <span className="sr-only">Message icon</span>
+                  </span>
+                </div>
+                <div className="ml-3 text-sm font-normal">
+                  <div className="text-sm text-blue-900 capitalize font-extrabold">
+                    {item.sender}
+                  </div>
+                  <div className="text-sm font-normal mt-2">{item.message}</div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
           ))}
-
-
-{/*
-
-<div
-          id="toast-notification"
-          className="w-12/12 md:w-10/12 mx-4 p-4 text-gray-900 bg-white rounded-lg shadow mt-4  "
-          role="alert">
-          <div className="flex items-center mb-3">
-            <span className="mb-1 text-sm font-semibold text-gray-900">
-              {" "}
-              Message{" "}
-            </span>
-          </div>
-          <div className="flex items-center">
-            <div className="relative inline-block shrink-0">
-              <img
-                className="w-12 h-12 rounded-full"
-                src={imageclient}
-                alt="Garage"
-              />
-              <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full">
-                <svg
-                  aria-hidden="true"
-                  className="w-4 h-4 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span className="sr-only">Message icon</span>
-              </span>
-            </div>
-            <div className="ml-3 text-sm font-normal">
-              <div className="text-sm text-blue-900 capitalize font-extrabold">
-                Client One
-              </div>
-              <div className="text-sm font-normal">
-                Hi! I got trouble of troubleshooting my Computer, It doesn't
-                show anything, What can I do?
-              </div>
-            </div>
-          </div>
         </div>
-        <div
-          id="toast-notification"
-          className="w-11/12 md:w-10/12 mx-4 p-4 text-gray-900 bg-blue-100 rounded-lg shadow mt-4"
-          role="alert"
-        >
-          <div className="flex items-center mb-3">
-            <span className="mb-1 text-sm font-semibold text-gray-900">
-              {" "}
-              Message{" "}
-            </span>
-          </div>
-
-          <div className="flex items-center">
-            <div className="relative inline-block shrink-0">
-              <img
-                className="w-12 h-12 rounded-full"
-                src={imagesupporter}
-                alt="Garage"
-              />
-              <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full">
-                <svg
-                  aria-hidden="true"
-                  className="w-4 h-4 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span className="sr-only">Message icon</span>
-              </span>
-            </div>
-            <div className="ml-3 text-sm font-normal">
-              <div className="text-sm text-blue-900 capitalize font-extrabold">
-                My Message
-              </div>
-              <div className="text-sm font-normal">
-                Try to troubleshooting my Computer, by checking the cable on the
-                CPU and anyway else.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          id="toast-notification"
-          className="w-12/12 md:w-10/12 mx-4 p-4 text-gray-900 bg-white rounded-lg shadow mt-4  "
-          role="alert"
-        >
-          <div className="flex items-center mb-3">
-            <span className="mb-1 text-sm font-semibold text-gray-900">
-              {" "}
-              Message{" "}
-            </span>
-          </div>
-          <div className="flex items-center">
-            <div className="relative inline-block shrink-0">
-              <img
-                className="w-12 h-12 rounded-full"
-                src={imageclient}
-                alt="Garage"
-              />
-              <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full">
-                <svg
-                  aria-hidden="true"
-                  className="w-4 h-4 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span className="sr-only">Message icon</span>
-              </span>
-            </div>
-            <div className="ml-3 text-sm font-normal">
-              <div className="text-sm text-blue-900 capitalize font-extrabold">
-                Client One
-              </div>
-              <div className="text-sm font-normal">
-                Still doesn't work how can I do that?
-              </div>
-            </div>
-          </div>
-        </div> */}
 
         {/* form */}
 
-        <form className="p-4 ml-4 mt-6 w-5/6  mb-2 bg-gray-500" onSubmit={(e)=>insert_message_in_db(e)}>
+        <form
+          className="p-4 ml-4 mt-6 w-5/6  mb-2 bg-gray-500"
+          onSubmit={(e) => insert_message_in_db(e)}
+        >
           <label for="chat" className="sr-only">
             Your message
           </label>
@@ -327,7 +183,7 @@ const Chats = () => {
               rows="1"
               className="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your message..."
-              onChange={(e)=>handleSendMsg(e)}
+              onChange={(e) => handleSendMsg(e)}
               value={written_msg}
             ></textarea>
             <button

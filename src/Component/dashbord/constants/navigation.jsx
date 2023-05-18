@@ -31,7 +31,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 	},
 	{
 		key: 'schedules',
-		label: 'schedules',
+		label: 'FAQ',
 		path: 'schedules',
 		icon: <HiOutlineUsers />
 	},
