@@ -13,6 +13,12 @@ import Schedule from "./Component/dashbord/schedules";
 import Settings from "./Component/dashbord/settings";
 import Logout from "./Component/dashbord/Logout";
 import Technician from "./pages/Technician";
+import SupporterSignIn from "./pages/SupporterSignIn";
+import Admindashboard from "./Component/admin/admindashboard";
+import Adminchats from "./Component/admin/adminchats";
+import Admincategory from "./Component/admin/admincategory";
+import AdminLayout from "./Component/admin/AdminLayout";
+
 
 
 function App() {
@@ -24,9 +30,10 @@ function App() {
         <Route path="HomePage" element={<HomePage />} />
         <Route path="SignUp" element={<SignUp />} />
         <Route path="SignIn" element={<SignIn />} />
+        <Route path="supporter" element={<SupporterSignIn />} />
       </Routes>
 
-        <Routes>
+      <Routes>
           <Route path="/dashboard" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="category" element={<Category />} />
@@ -36,6 +43,15 @@ function App() {
             <Route path="settings" element={<Settings/>} />
             <Route path="logout" element={<Logout/>} />
             {/* <Route path="tech" element={<Technician/>} /> */}
+          </Route>
+
+        </Routes>
+
+        <Routes>
+          <Route path="/supporter-dashboard" element={< AdminLayout />}>
+            <Route index element={< Admindashboard />} />
+            <Route path="category" element={< Admincategory />} />
+            <Route path="chats" element={< Adminchats/>} />
           </Route>
 
         </Routes>
