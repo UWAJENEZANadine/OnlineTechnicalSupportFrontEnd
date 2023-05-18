@@ -39,7 +39,7 @@ const SupporterSignIn = () => {
         // setMessage(result.data.msg);
         console.log(result.data);
         localStorage.setItem('access_token', result.data['access']);
-        navigate("/support-dashboard");
+        navigate("/supporter-dashboard");
       }).catch((error) => {
         console.log(error);
         window.alert("Incorrect username or password");

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { IoBagHandle } from "react-icons/io5";
 import { HostUrl } from "../../pages/Configurations";
 import chartimage  from "../../Assets/chart.png"
+import { useNavigate } from "react-router-dom";
+
 import {
   Chart as ChartJS,
   BarElement,
@@ -29,6 +31,8 @@ const Admindashboard = () => {
   const [numberOfclients, setnumberOfsupporters] = useState(null);
   const [numberOfconversatin, setnumberOfconversatin] = useState(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const accessToken = localStorage.getItem("access_token");
     // console.log("Token is ", access_token);
@@ -44,6 +48,21 @@ const Admindashboard = () => {
       })
       .catch((err) => {
         console.log(err);
+      });
+
+      axios
+      .get(HostUrl + "check-supporter/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        // setnumberOfCategory(res.data["number"]);
+      })
+      .catch((err) => {
+        console.log(err);
+        navigate("/");
+
       });
 
       axios
