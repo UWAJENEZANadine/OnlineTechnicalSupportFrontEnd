@@ -46,8 +46,9 @@ const Adminchats = () => {
     const json_data = {
       message: written_msg,
       conversation: convId,
+      sender:'support'
     };
-    axios.post(HostUrl + "insert-message/", json_data).then((response) => {
+    axios.post(HostUrl + "insert-message-admin/", json_data).then((response) => {
       // setMessages(response.data);
       get_messages(event, convId, title);
       setWritten_msg("");
@@ -58,7 +59,7 @@ const Adminchats = () => {
   return (
     <div className="flex">
       <div className="w-4/12 bg-gray-50 p-4">
-        <h2> MY CHARTS </h2>
+        <h2> ASKED QUESIONS </h2>
         {data.map((item) => (
           <div className="p-2 ml-2 mt-3 rounded bg-blue-gray-50" key={item.id}>
             <div className="flex justify-start items-center gap-6 p-2">

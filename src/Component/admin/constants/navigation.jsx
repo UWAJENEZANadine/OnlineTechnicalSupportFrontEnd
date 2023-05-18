@@ -19,7 +19,7 @@ export const SUPPORT_SIDEBAR_LINKS = [
 	},
 	{
 		key: 'category',
-		label: 'Category',
+		label: 'New FAQ',
 		path: 'category',
 		icon: <HiOutlineCube />
 	},

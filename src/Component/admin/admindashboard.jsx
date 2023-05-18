@@ -26,7 +26,7 @@ ChartJS.register(
 const Admindashboard = () => {
   const [numberOfCategory, setnumberOfCategory] = useState(null);
   const [numberOfsubCategory, setnumberOfSubCategory] = useState(null);
-  const [numberOfsupporters, setnumberOfsupporters] = useState(null);
+  const [numberOfclients, setnumberOfsupporters] = useState(null);
   const [numberOfconversatin, setnumberOfconversatin] = useState(null);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const Admindashboard = () => {
       });
 
     axios
-      .get(HostUrl + "number-supporters/", {
+      .get(HostUrl + "number-clients/", {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -175,11 +175,11 @@ const Admindashboard = () => {
           </div>
           <div className="pl-4">
             <span className="text-sm text-gray-500 font-light">
-              Total Supporters
+              Total Client
             </span>
             <div className="flex items-center">
               <strong className="text-xl text-gray-700 font-semibold">
-                {numberOfsupporters ? <>{numberOfsupporters}</> : 0}
+                {numberOfclients ? <>{numberOfclients}</> : 0}
                 <span className="text-sm text-green-500 pl-2">Supporters</span>
               </strong>
             </div>
