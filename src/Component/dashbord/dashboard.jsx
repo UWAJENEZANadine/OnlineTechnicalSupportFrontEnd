@@ -3,7 +3,25 @@ import React, { useState, useEffect } from "react";
 import { IoBagHandle } from "react-icons/io5";
 import { HostUrl } from "../../pages/Configurations";
 import chartimage  from "../../Assets/chart.png"
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend
+} from 'chart.js';
 
+import { Bar } from 'react-chartjs-2';
+
+
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend
+)
 
 const Dashboard = () => {
   const [numberOfCategory, setnumberOfCategory] = useState(null);
@@ -81,6 +99,38 @@ const Dashboard = () => {
         console.log(err);
       });
   }, []);
+
+
+  // chart data
+  const chart_data = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr','May'],
+    datasets:[
+      {
+        label: 'Issues',
+        data: [21,28,27,25,23],
+        backgroundColor: '#7ebdc3',
+        borderColor: 'black',
+        borderWidth: 1,
+
+      },{
+        label: 'Resolved',
+        data: [18,26,22,25,21],
+        backgroundColor: '#DCDF8E',
+        borderColor: 'black',
+        borderWidth: 1,
+
+      },{
+        label: 'Failed',
+        data: [3,2,2,5,2],
+        backgroundColor: '#DF8E92',
+        borderColor: 'black',
+        borderWidth: 1,
+
+      }
+    ]
+  }
+
+  const chart_options ={}
 
   return (
     <>
@@ -160,7 +210,14 @@ const Dashboard = () => {
       </div>
 
       <h2 className="ml-16 font-extrabold mt-4"> MY ACTIVITIES </h2>
-      <img src={chartimage} className="m-2 ml-8 w-9/12" />
+      <div className="m-2 ml-8 w-9/12">
+      <Bar
+      data ={chart_data}
+      options={chart_options}
+      height={76}
+      width={200}
+      />
+      </div>
     </>
   );
 };
