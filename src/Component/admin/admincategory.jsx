@@ -27,6 +27,7 @@ function Admincategory() {
       // setMessages(response.data);
       setTitle("");
       setDesc("");
+      window.alert("New FAQ sent!")
       // event.target.value = '';
     });
   };
