@@ -14,12 +14,12 @@ const Adminchats = () => {
   const [written_msg, setWritten_msg] = useState([]);
 
   const accessToken = localStorage.getItem("access_token");
-  const clientId = localStorage.getItem("client_id");
+  const sup_Id = localStorage.getItem("sup_id");
 
   useEffect(() => {
-    console.log(" Token still ", clientId);
+    console.log(" Token still ", sup_Id);
     axios
-      .get(HostUrl + "get-conversation/" + clientId + "/")
+      .get(HostUrl + "get-sup-conversation/" + sup_Id + "/")
       .then((response) => {
         setData(response.data);
       })

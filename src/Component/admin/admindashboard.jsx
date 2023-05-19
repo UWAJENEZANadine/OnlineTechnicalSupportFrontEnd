@@ -66,13 +66,13 @@ const Admindashboard = () => {
       });
 
       axios
-      .get(HostUrl + "get-client-id/",{
+      .get(HostUrl + "get-supp-id/",{
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       })
       .then((response) => {
-        localStorage.setItem("client_id", response.data['id']);
+        localStorage.setItem("sup_id", response.data['id']);
         console.log(" Client id is ", response.data['id'] )
       })
       .catch((error) => {
@@ -125,22 +125,22 @@ const Admindashboard = () => {
     labels: ['Jan', 'Feb', 'Mar', 'Apr','May'],
     datasets:[
       {
-        label: 'Issues',
-        data: [21,28,27,25,23],
+        label: 'Category',
+        data: [0, 0, 0,0 , numberOfCategory],
         backgroundColor: '#7ebdc3',
         borderColor: 'black',
         borderWidth: 1,
 
       },{
-        label: 'Resolved',
-        data: [18,26,22,25,21],
+        label: 'Sub Category',
+        data: [0,0,0,0, numberOfsubCategory],
         backgroundColor: '#DCDF8E',
         borderColor: 'black',
         borderWidth: 1,
 
       },{
-        label: 'Failed',
-        data: [3,2,2,5,2],
+        label: 'Clients',
+        data: [0, 0,0,0, numberOfclients],
         backgroundColor: '#DF8E92',
         borderColor: 'black',
         borderWidth: 1,
